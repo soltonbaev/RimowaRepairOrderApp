@@ -6,41 +6,58 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { getCustomers } from "../../store/reducer";
+import moment from "moment";
 
 import "./OrdersTable.css";
 
-const TABLE_COLUMNS = ["Name", "Email", "Phone#", "Company name"];
+const TABLE_COLUMNS = [
+  "Order placed",
+  "Name",
+  "Email",
+  "Phone#",
+  "Company name",
+  "Items in order"
+];
 
 export default class CustomizedTables extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getCustomers());
-  }
-
   render() {
-    const { rows } = this.props;
+    const { orders } = this.props;
     return (
       <Paper className="root">
         <Table className="table">
           <TableHead className="head">
             <TableRow>
               {TABLE_COLUMNS.map(column => (
-                <TableCell key={column} className="table" align="center">
+                <TableCell
+                  key={column}
+                  className="table"
+                  style={{ color: "white" }}
+                  align="center"
+                >
                   {column}
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.name}>
+            {orders.map(order => (
+              <TableRow key={order.uid}>
                 <TableCell align="center">
-                  {`${row.firstName} ${row.lastName}`}
+                  {moment(order.date).format("MMM DD YYYY")}
+                  <br />
+                  {moment(order.date).format("hh:mm A")}
                 </TableCell>
-                <TableCell align="center">{row.email}</TableCell>
-                <TableCell align="center">{row.phone}</TableCell>
-                <TableCell align="center">{row.companyName}</TableCell>
+                <TableCell align="center">
+                  {`${order.customer.firstName} ${order.customer.lastName}`}
+                </TableCell>
+                <TableCell align="center">{order.customer.email}</TableCell>
+                <TableCell align="center">{order.customer.phone}</TableCell>
+                <TableCell align="center">
+                  {order.customer.companyName}
+                </TableCell>
+                <TableCell align="center">
+                  {order.customer.customer_items.length}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

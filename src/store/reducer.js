@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import { GET_CUSTOMERS, SET_CUSTOMERS_LIST } from "./actionTypes";
-import { setCustomers } from "./actions";
+import { SET_ORDERS_LIST, SET_CUSTOMERS_LIST } from "./actionTypes";
+import { setCustomers, setOrders } from "./actions";
 import api from "../api";
 
 export default combineReducers({
@@ -11,6 +11,16 @@ export default combineReducers({
       //   return getCustomers;
       // }
       case SET_CUSTOMERS_LIST: {
+        return action.payload;
+      }
+      default: {
+        return state;
+      }
+    }
+  },
+  repairOrders: (state = [], action) => {
+    switch (action.type) {
+      case SET_ORDERS_LIST: {
         return action.payload;
       }
       default: {
@@ -28,3 +38,17 @@ export function getCustomers() {
     });
   };
 }
+
+export function getOrders() {
+  return function(dispatch, getState) {
+    api.orders.list().then(data => {
+      dispatch(setOrders(data));
+    });
+  };
+}
+
+// export function addRepairOrder(orderData) {
+//   return function(dispatch, getState) {
+
+//   };
+// }

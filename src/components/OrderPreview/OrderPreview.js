@@ -5,8 +5,7 @@ import moment from "moment";
 import { ROUTES } from "../../constants/routes";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-
-import { formValueSelector } from "redux-form";
+import api from "../../api";
 import WrappedButton from "../WrappedButton";
 
 export default class OrderPreview extends React.Component {
@@ -21,8 +20,10 @@ export default class OrderPreview extends React.Component {
     const orderItems = JSON.parse(window.sessionStorage.itemsList);
     const clientInfo = JSON.parse(window.sessionStorage.clientInfo);
     const associateName = window.sessionStorage.associateName;
+    const orderUID = window.sessionStorage.orderUID;
+    console.log(orderUID);
     const orderData = {
-      uid: uuid(),
+      uid: orderUID,
       date: new Date(),
       ...clientInfo,
       items: orderItems,
@@ -32,37 +33,46 @@ export default class OrderPreview extends React.Component {
     this.setState({ orderData });
   }
 
+  submitRepairOrder = orderData => {
+    api.orders.addOrder(orderData).then(data => {
+      console.log(data);
+    });
+  };
+
   mockData = {
-    uid: "f86f8794-6d11-4665-9c98-4dc518c930ab",
-    date: "2019-08-27T21:35:52.126Z",
-    firstName: "Denys",
+    uid: "dcd2b060-c7b7-4d8d-94f3-28ff851d8ca7",
+    date: "2019-08-28T23:38:33.324Z",
+    firstName: "Denis",
     lastName: "Andreiev",
-    email: "denisandreev64@gmail.com",
-    phone: "9292532329",
-    companyName: "company name",
-    shippingAddress: "1914 Bay Ridge parkway apt. 1R",
+    email: "denis@gmail.com",
+    phone: "123456789",
+    companyName: "Company Name",
+    shippingAddress: "Shipping Address 1",
     shipWhenComplete: true,
+    customerId: "c3853e27-f827-4ebb-a26d-a6979fb54832",
     items: [
       {
-        needsBy: "2019-08-29T21:34:00.000Z",
-        serialNumber: "123",
-        lockCombo: "1234",
-        model: "model1",
+        needsBy: "2019-08-30T23:31:00.000Z",
+        serialNumber: "123454321",
+        lockCombo: "9876",
+        model: "SuitCase1",
         reasonForRepair: "broken wheel",
         warranty: true,
-        uid: "7902b9f6-79ad-4cdc-aac3-ff23f3f2361e"
+        uid: "2f0da2b7-29ab-4b02-9e52-20537d52db65",
+        ownerId: "c3853e27-f827-4ebb-a26d-a6979fb54832"
       },
       {
-        needsBy: "2019-08-30T21:35:00.000Z",
-        serialNumber: "12345",
-        lockCombo: "5689",
-        model: "model2",
-        reasonForRepair: "handle broken",
-        warranty: true,
-        uid: "902f4ae5-85bf-4094-a087-d32b9b94bc01"
+        needsBy: "2019-08-29T23:32:00.000Z",
+        serialNumber: "321456",
+        lockCombo: "3214",
+        model: "SuitCase2",
+        reasonForRepair: "Broken lock",
+        warranty: false,
+        uid: "abf1e260-553f-44e4-b0e0-1a1ce354dcfc",
+        ownerId: "c3853e27-f827-4ebb-a26d-a6979fb54832"
       }
     ],
-    associateName: "associate 123"
+    associateName: "Asociate Name "
   };
 
   render() {
@@ -146,6 +156,10 @@ export default class OrderPreview extends React.Component {
                 );
               })}
             </div>
+            <WrappedButton
+              label="Submit repair order"
+              onClick={() => this.submitRepairOrder(this.state.orderData)}
+            />
           </Card>
         </div>
       </div>
