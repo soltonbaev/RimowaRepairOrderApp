@@ -1,0 +1,29 @@
+.orderCard {
+  padding: 20px;
+  margin: 10px;
+}
+
+.previewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.orderPreviewTitle {
+  margin: 10px;
+  font-size: 22px;
+  font-weight: 400;
+  font-family: "Favorit Light", Arial, sans-serif;
+}
+
+.row {
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px;
+  padding: 10px;
+}
+
+/* .itemsContainer {
+
+} */
