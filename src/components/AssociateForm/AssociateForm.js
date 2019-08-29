@@ -124,8 +124,8 @@ export default class AssociateForm extends React.Component {
         <div className="row">
           {submitted ? (
             <WrappedButton
-              href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
-              label="Next"
+              href={ROUTES.NEW_REPAIR_ORDER.NESTED.ORDER_PREVIEW}
+              label="Preview order"
             />
           ) : (
             <WrappedButton

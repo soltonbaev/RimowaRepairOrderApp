@@ -8,18 +8,18 @@ export default class Home extends React.Component {
     return (
       <div className="homeContainer">
         <div className="rimowaLogoText">RIMOWA</div>
-        <div>Client Care</div>
+        <div className="rimowaSubtitle">Client Care</div>
         <WrappedButton
           variant="outlined"
           className="button"
           href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
-          label="Add repair order"
+          label="Add repair ticket"
         />
         <WrappedButton
           variant="outlined"
           className="button"
           href={ROUTES.REPAIR_ORDERS.PATH}
-          label="View all repair orders"
+          label="View repair tickets"
         />
       </div>
     );
