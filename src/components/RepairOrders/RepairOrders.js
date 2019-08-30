@@ -1,18 +1,19 @@
 import React from "react";
 import "./RepairOrders.css";
 import OrdersTable from "../OrdersTable";
-import { getCustomers } from "../../store/reducer";
-
+import { getOrders } from "../../store/reducer";
 export default class RepairOrders extends React.Component {
   componentDidMount() {
-    this.props.dispatch(getCustomers());
+    const { dispatch } = this.props;
+    dispatch(getOrders());
   }
   render() {
-    console.log(this.props.rows);
+    const { orders } = this.props;
+    console.log(orders);
     return (
-      <div>
-        REPAIR ORDERS:
-        <OrdersTable rows={this.props.rows} />
+      <div className="tableContainer">
+        <div className="tableLabel">REPAIR ORDERS:</div>
+        <OrdersTable className="table" orders={orders} />
       </div>
     );
   }

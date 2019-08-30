@@ -4,6 +4,7 @@ import { ROUTES } from "../../constants/routes";
 import { formValueSelector } from "redux-form";
 import WrappedButton from "../WrappedButton";
 import Form from "./Form";
+import uuid from "uuid";
 
 export default class ClientForm extends React.Component {
   constructor(props) {
@@ -28,12 +29,14 @@ export default class ClientForm extends React.Component {
     );
     clientInfo = {
       ...clientInfo,
+      customerId: uuid(),
       shipWhenComplete:
         clientInfo.shipWhenComplete !== undefined || null || ""
           ? clientInfo.shipWhenComplete
           : false
     };
     window.sessionStorage.clientInfo = JSON.stringify(clientInfo);
+    window.sessionStorage.orderUID = uuid();
     console.log("clientInfo", clientInfo);
     this.setState({ saved: true });
   };

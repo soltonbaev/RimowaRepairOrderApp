@@ -41,6 +41,7 @@ export default class AssociateForm extends React.Component {
       item[field] = selector(this.props.state, field);
     });
     item.uid = uuid();
+    item.ownerId = JSON.parse(window.sessionStorage.clientInfo).customerId;
     return item;
   };
 
@@ -125,7 +126,7 @@ export default class AssociateForm extends React.Component {
           {submitted ? (
             <WrappedButton
               href={ROUTES.NEW_REPAIR_ORDER.NESTED.ORDER_PREVIEW}
-              label="Preview order"
+              label="Next"
             />
           ) : (
             <WrappedButton
