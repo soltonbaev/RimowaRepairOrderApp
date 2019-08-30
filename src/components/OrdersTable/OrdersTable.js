@@ -40,8 +40,14 @@ export default class CustomizedTables extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {orders.map(order => (
-              <TableRow key={order.uid}>
+            {orders.map((order, index) => (
+              <TableRow
+                key={order.uid}
+                style={{
+                  backgroundColor:
+                    index % 2 === 0 ? "white" : "rgba(208, 208, 208, 0.87)"
+                }}
+              >
                 <TableCell align="center">
                   {moment(order.date).format("MMM DD YYYY")}
                   <br />

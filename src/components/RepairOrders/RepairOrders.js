@@ -11,9 +11,9 @@ export default class RepairOrders extends React.Component {
     const { orders } = this.props;
     console.log(orders);
     return (
-      <div>
-        REPAIR ORDERS:
-        <OrdersTable orders={orders} />
+      <div className="tableContainer">
+        <div className="tableLabel">REPAIR ORDERS:</div>
+        <OrdersTable className="table" orders={orders} />
       </div>
     );
   }

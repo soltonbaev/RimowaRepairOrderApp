@@ -7,9 +7,6 @@ import api from "../api";
 export default combineReducers({
   customers: (state = [], action) => {
     switch (action.type) {
-      // case GET_CUSTOMERS: {
-      //   return getCustomers;
-      // }
       case SET_CUSTOMERS_LIST: {
         return action.payload;
       }
@@ -46,9 +43,3 @@ export function getOrders() {
     });
   };
 }
-
-// export function addRepairOrder(orderData) {
-//   return function(dispatch, getState) {
-
-//   };
-// }
