@@ -24,7 +24,7 @@ export default class OrderPreview extends React.Component {
     console.log(orderUID);
     const orderData = {
       uid: orderUID,
-      date: new Date(),
+      creationDate: new Date(),
       ...clientInfo,
       items: orderItems,
       associateName
@@ -41,7 +41,7 @@ export default class OrderPreview extends React.Component {
 
   mockData = {
     uid: "dcd2b060-c7b7-4d8d-94f3-28ff851d8ca7",
-    date: "2019-08-28T23:38:33.324Z",
+    creationDate: "2019-08-28T23:38:33.324Z",
     firstName: "Denis",
     lastName: "Andreiev",
     email: "denis@gmail.com",
@@ -78,7 +78,7 @@ export default class OrderPreview extends React.Component {
   render() {
     if (!this.state.orderData) return null;
     const {
-      date,
+      creationDate,
       firstName,
       lastName,
       email,
@@ -99,7 +99,7 @@ export default class OrderPreview extends React.Component {
             <Typography
               color="textSecondary"
               gutterBottom
-            >{`Order created: ${moment(date).format(
+            >{`Order created: ${moment(creationDate).format(
               "MMM DD YYYY"
             )}`}</Typography>
             <Typography
