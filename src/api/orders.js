@@ -7,4 +7,7 @@ export default class Orders extends Base {
   list() {
     return this.apiClient.get("orders");
   }
+  exportNew() {
+    return this.apiClient.get("exportNew");
+  }
 }

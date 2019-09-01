@@ -4,7 +4,7 @@
 }
 
 .root {
-  width: 80%;
+  margin: 20px;
   /* overflow-x: auto; */
 }
 
@@ -15,4 +15,22 @@
 
 .body {
   font-size: 14;
+}
+
+.tableRow:hover {
+  border: 2px solid black;
+}
+
+.actionIcon {
+  margin: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.delete:hover {
+  color: red;
+}
+
+.edit:hover {
+  color: blue;
 }

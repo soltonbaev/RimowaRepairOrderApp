@@ -126,8 +126,7 @@ export default class OrderPreview extends React.Component {
                   lockCombo,
                   model,
                   reasonForRepair,
-                  warranty,
-                  uid
+                  warranty
                 } = item;
                 return (
                   <Card className="orderCard">
