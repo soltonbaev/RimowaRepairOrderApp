@@ -2,17 +2,43 @@ import React from "react";
 import "./RepairOrders.css";
 import OrdersTable from "../OrdersTable";
 import { getOrders } from "../../store/reducer";
+import WrappedButton from "../WrappedButton";
+import api from "../../api";
+import { API_URL } from "../../config";
+
 export default class RepairOrders extends React.Component {
+  state = {
+    hideExportNew: true
+  };
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getOrders());
   }
-  render() {
+
+  componentDidUpdate() {
     const { orders } = this.props;
-    console.log(orders);
+    if (!orders) return;
+    if (orders.map(order => order.orderStatus).includes("NEW")) {
+      this.state.hideExportNew !== false &&
+        this.setState({ hideExportNew: false });
+    } else {
+      this.state.hideExportNew !== true &&
+        this.setState({ hideExportNew: true });
+    }
+  }
+
+  render() {
+    const { orders, dispatch } = this.props;
     return (
       <div className="tableContainer">
         <div className="tableLabel">REPAIR ORDERS:</div>
+        <WrappedButton
+          disabled={this.state.hideExportNew}
+          onClick={() => setTimeout(() => dispatch(getOrders()), 2000)}
+          href={`${API_URL}/exportNew`}
+          label="Export NEW records"
+        />
         <OrdersTable className="table" orders={orders} />
       </div>
     );

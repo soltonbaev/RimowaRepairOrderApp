@@ -29,6 +29,7 @@ export default class ApiClient {
     if (body) req.send(body);
 
     return req.then(res => {
+      if (!res.body) return res;
       if (!res.body.status) throw res.body.error;
       return res.body.data;
     });

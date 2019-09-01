@@ -16,6 +16,11 @@ const Routes = () => (
       <Route path={ROUTES.HOME} component={Home} exact />
       <Route path={ROUTES.REPAIR_ORDERS.PATH} component={RepairOrders} exact />
       <Route
+        path={ROUTES.REPAIR_ORDERS.NESTED.PREVIEW}
+        component={OrderPreview}
+        exact
+      />
+      <Route
         path={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
         component={AssociateForm}
         exact

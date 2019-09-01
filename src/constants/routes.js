@@ -10,7 +10,10 @@ const ROUTES = {
     }
   },
   REPAIR_ORDERS: {
-    PATH: "/repair-orders"
+    PATH: "/repair-orders",
+    NESTED: {
+      PREVIEW: "/repair-orders/preview"
+    }
   }
 };
 

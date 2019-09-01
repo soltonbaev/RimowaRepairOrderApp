@@ -1,5 +1,7 @@
 import React from "react";
 import classnames from "classnames";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -16,7 +18,9 @@ const TABLE_COLUMNS = [
   "Email",
   "Phone#",
   "Company name",
-  "Items in order"
+  "Items in order",
+  "Order status",
+  "Actions"
 ];
 
 export default class CustomizedTables extends React.Component {
@@ -45,13 +49,16 @@ export default class CustomizedTables extends React.Component {
                 key={order.uid}
                 style={{
                   backgroundColor:
-                    index % 2 === 0 ? "white" : "rgba(208, 208, 208, 0.87)"
+                    order.orderStatus === "NEW"
+                      ? "rgba(182, 234, 231, 0.87)"
+                      : "white"
                 }}
+                className="tableRow"
               >
                 <TableCell align="center">
-                  {moment(order.date).format("MMM DD YYYY")}
+                  {moment(order.creationDate).format("MMM DD YYYY")}
                   <br />
-                  {moment(order.date).format("hh:mm A")}
+                  {moment(order.creationDate).format("hh:mm A")}
                 </TableCell>
                 <TableCell align="center">
                   {`${order.customer.firstName} ${order.customer.lastName}`}
@@ -63,6 +70,15 @@ export default class CustomizedTables extends React.Component {
                 </TableCell>
                 <TableCell align="center">
                   {order.customer.customer_items.length}
+                </TableCell>
+                <TableCell align="center">
+                  <div style={{ fontStyle: "italic", fontWeight: "bold" }}>
+                    {order.orderStatus}
+                  </div>
+                </TableCell>
+                <TableCell align="center">
+                  <DeleteIcon className="actionIcon delete" />
+                  <EditIcon className="actionIcon edit" />
                 </TableCell>
               </TableRow>
             ))}
