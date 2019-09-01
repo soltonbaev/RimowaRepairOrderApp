@@ -43,10 +43,11 @@ export default class ClientForm extends React.Component {
 
   render() {
     return (
-      <div className="formContainer">
-        <div className="row">
+      <div className="formContainer clientFormContainer">
+                <div className="rimowaLogoText">RIMOWA</div>
+        <div className="rimowaSubtitle">Client Care</div>
+
           <div className="formLabel">Client to complete:</div>
-        </div>
         <Form />
         {!this.state.saved ? (
           <WrappedButton onClick={this.handleSubmit} label="Save client info" />

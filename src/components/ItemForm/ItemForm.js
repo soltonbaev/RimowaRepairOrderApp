@@ -87,7 +87,7 @@ const createItemForm = itemNum => {
                 <FormControlLabel
                   {...input}
                   control={<Checkbox color="default" value="checkedG" />}
-                  label="Covered under warranty (check the box if true)"
+                  label="check the box if under warranty"
                 />
               )}
             />
