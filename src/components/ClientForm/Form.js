@@ -7,7 +7,7 @@ import Input from "../CustomInput";
 let ClientForm = props => {
   const { handleSubmit } = props;
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <div className="clientForm">
         <div className="row">
           <Field

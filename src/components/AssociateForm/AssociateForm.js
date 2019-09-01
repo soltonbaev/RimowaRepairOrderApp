@@ -87,20 +87,21 @@ export default class AssociateForm extends React.Component {
   render() {
     const { items, tab, submitted } = this.state;
     return (
-      <div className="formContainer">
+      <div className="formContainer associateFormContainer">
+        
+          <div className="rimowaLogoText">RIMOWA</div>
+          <div className="rimowaSubtitle">Client Care</div>
+       
+        <div className="formLabel">Associate to complete:</div>
         <div className="row">
-          <div className="formLabel">Associate to complete:</div>
-        </div>
         <Input
           className="inputField"
           onChange={this.associateNameChange}
           label="Associate Name"
           margin="normal"
         />
-        <div className="row">
-          <WrappedButton onClick={this.addItem} label="Add item" />
         </div>
-
+<div className="paperContainer">
         <Paper square>
           <Tabs
             value={tab}
@@ -113,7 +114,7 @@ export default class AssociateForm extends React.Component {
                 return (
                   <Tab
                     key={index}
-                    label={`Item-${index + 1}`}
+                    label={`Item ${index + 1}`}
                     id={`Item-${index + 1}`}
                     value={index}
                   />
@@ -121,7 +122,12 @@ export default class AssociateForm extends React.Component {
               })}
           </Tabs>
           <div className="row">{items[tab]}</div>
+
         </Paper>
+        </div>
+        <div className="row addItemButton">
+          <WrappedButton onClick={this.addItem} label="Add another item" />
+        </div>
         <div className="row">
           {submitted ? (
             <WrappedButton
@@ -129,11 +135,11 @@ export default class AssociateForm extends React.Component {
               label="Next"
             />
           ) : (
-            <WrappedButton
-              onClick={this.submitForm}
-              label="Submit order info"
-            />
-          )}
+              <WrappedButton
+                onClick={this.submitForm}
+                label="Submit order info"
+              />
+            )}
         </div>
       </div>
     );
