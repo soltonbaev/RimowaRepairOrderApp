@@ -8,7 +8,7 @@ import AssociateForm from "./components/AssociateForm";
 import ClientForm from "./components/ClientForm";
 import RepairOrders from "./components/RepairOrders";
 import Signature from "./components/Signature";
-import OrderPreview from "./components/OrderPreview";
+import OrderPreview from "./components/OrderPreviewTemplate";
 
 const Routes = () => (
   <Router>

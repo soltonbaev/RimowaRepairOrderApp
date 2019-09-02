@@ -10,7 +10,12 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import moment from "moment";
 
+import OrderPreview from "../OrderPreviewTemplate";
+
 import "./OrdersTable.css";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
+import { Popover } from "@material-ui/core";
 
 const TABLE_COLUMNS = [
   "Order placed",
@@ -24,10 +29,34 @@ const TABLE_COLUMNS = [
 ];
 
 export default class CustomizedTables extends React.Component {
+  state = {
+    anchorEl: null,
+    orderToPreview: null
+  };
+
+  showPreview = (anchorEl, order) =>
+    this.setState({ anchorEl, orderToPreview: order });
+
+  handleClose = () => this.setState({ anchorEl: null, orderToPreview: null });
+
   render() {
     const { orders } = this.props;
     return (
       <Paper className="root">
+        <Popover
+          open={Boolean(this.state.anchorEl)}
+          onClose={this.handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center"
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center"
+          }}
+        >
+          <OrderPreview order={this.state.orderToPreview} />
+        </Popover>
         <Table className="table">
           <TableHead className="head">
             <TableRow>
@@ -54,6 +83,7 @@ export default class CustomizedTables extends React.Component {
                       : "white"
                 }}
                 className="tableRow"
+                onClick={e => this.showPreview(e.currentTarget, order)}
               >
                 <TableCell align="center">
                   {moment(order.creationDate).format("MMM DD YYYY")}

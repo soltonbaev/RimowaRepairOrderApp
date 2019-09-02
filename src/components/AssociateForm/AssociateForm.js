@@ -88,58 +88,50 @@ export default class AssociateForm extends React.Component {
     const { items, tab, submitted } = this.state;
     return (
       <div className="formContainer associateFormContainer">
-        
-          <div className="rimowaLogoText">RIMOWA</div>
-          <div className="rimowaSubtitle">Client Care</div>
-       
+        <div className="rimowaLogoText">RIMOWA</div>
+        <div className="rimowaSubtitle">Client Care</div>
+
         <div className="formLabel">Associate to complete:</div>
         <div className="row">
-        <Input
-          className="inputField"
-          onChange={this.associateNameChange}
-          label="Associate Name"
-          margin="normal"
-        />
+          <Input
+            className="inputField"
+            onChange={this.associateNameChange}
+            label="Associate Name"
+            margin="normal"
+          />
         </div>
-<div className="paperContainer">
-        <Paper square>
-          <Tabs
-            value={tab}
-            indicatorColor="primary"
-            textColor="primary"
-            onChange={this.tabChange}
-          >
-            {items &&
-              items.map((item, index) => {
-                return (
-                  <Tab
-                    key={index}
-                    label={`Item ${index + 1}`}
-                    id={`Item-${index + 1}`}
-                    value={index}
-                  />
-                );
-              })}
-          </Tabs>
-          <div className="row">{items[tab]}</div>
-
-        </Paper>
+        <div className="paperContainer">
+          <Paper square>
+            <Tabs
+              value={tab}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={this.tabChange}
+            >
+              {items &&
+                items.map((item, index) => {
+                  return (
+                    <Tab
+                      key={index}
+                      label={`Item ${index + 1}`}
+                      id={`Item-${index + 1}`}
+                      value={index}
+                    />
+                  );
+                })}
+            </Tabs>
+            <div className="row">{items[tab]}</div>
+          </Paper>
         </div>
         <div className="row addItemButton">
           <WrappedButton onClick={this.addItem} label="Add another item" />
         </div>
         <div className="row">
-          {submitted ? (
-            <WrappedButton
-              href={ROUTES.NEW_REPAIR_ORDER.NESTED.ORDER_PREVIEW}
-              label="Next"
-            />
-          ) : (
-              <WrappedButton
-                onClick={this.submitForm}
-                label="Submit order info"
-              />
-            )}
+          <WrappedButton
+            onClick={this.submitForm}
+            href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
+            label="Submit order info"
+          />
         </div>
       </div>
     );
