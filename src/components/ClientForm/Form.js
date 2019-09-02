@@ -81,7 +81,7 @@ let ClientForm = props => {
             )}
           />
         </div>
-        <div className="row checkbox">
+        <div className="checkboxContainer">
           <Field
             name="shipWhenComplete"
             defaultValue={false}

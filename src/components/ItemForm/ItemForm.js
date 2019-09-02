@@ -78,7 +78,7 @@ const createItemForm = itemNum => {
               )}
             />
           </div>
-          <div className="row checkbox">
+          <div className="checkboxContainer">
             <Field
               name="warranty"
               // validate={[required]}

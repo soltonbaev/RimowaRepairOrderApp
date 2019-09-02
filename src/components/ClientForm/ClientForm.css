@@ -23,8 +23,9 @@
 }
 
 .form{
-  width: 100%;
-  margin: 30px 0 30px 0;
+  /* max-width: 100%; */
+  margin: 30px 10px 30px 10px;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
 .clientFormContainer .row {
   display: flex;
@@ -39,7 +40,8 @@
 .clientFormContainer .inputField {
   flex: 1;
   margin: 10px;
-  width:100%;
+  width:80%;
+  text-align: center;
 }
 
 .formLabel {
@@ -53,8 +55,15 @@
 
 @media screen and (min-width: 900px){
   .form{
-    width: 70%;
-      margin: 0px 0 30px 0;
+    width: 50%;
+      padding: 30px 0 30px 0;
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+
     
   }
+}
+
+.checkboxContainer{
+  text-align:center;
+  padding: 10px;
 }

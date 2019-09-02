@@ -1,3 +1,19 @@
+.tableContainer .rimowaLogoText {
+  margin: 1% 0 0 0;
+  font-size: 25px;
+  font-weight: 400;
+  font-family: "Favorit Light", Arial, sans-serif;
+  color: #00000091;
+}
+
+.tableContainer .rimowaSubtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  margin: 0% 0% 1% 0;
+  color: #00000091;
+}
+
 .tableContainer {
   display: flex;
   flex-direction: column;
@@ -5,13 +21,38 @@
   justify-content: center;
 }
 
+.labelButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pseudoDiv {
+  flex:1;
+}
 .tableLabel {
+  flex: 1;
+  /* order: 0; */
   margin: 10px;
-  font-size: 35px;
+  font-size: 16px;
   font-weight: 400;
   font-family: "Favorit Light", Arial, sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.exportButton {
+  flex:1;
+  /* order: 1; */
+  justify-content: flex-end;
+  text-align: center;
 }
 
 .table {
-  margin: 0 auto;
+  /* margin: 0 auto; */
+}
+
+tableContainer {
+  width: 100%;
 }

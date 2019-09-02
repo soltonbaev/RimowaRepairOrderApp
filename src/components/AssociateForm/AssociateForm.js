@@ -90,9 +90,9 @@ export default class AssociateForm extends React.Component {
       <div className="formContainer associateFormContainer">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
-
         <div className="formLabel">Associate to complete:</div>
         <div className="row">
+   
           <Input
             className="inputField"
             onChange={this.associateNameChange}
@@ -130,7 +130,7 @@ export default class AssociateForm extends React.Component {
           <WrappedButton
             onClick={this.submitForm}
             href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
-            label="Submit order info"
+            label="Save and Continue"
           />
         </div>
       </div>

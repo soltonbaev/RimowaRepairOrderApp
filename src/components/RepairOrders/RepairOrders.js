@@ -32,14 +32,21 @@ export default class RepairOrders extends React.Component {
     const { orders, dispatch } = this.props;
     return (
       <div className="tableContainer">
-        <div className="tableLabel">REPAIR ORDERS:</div>
-        <WrappedButton
-          disabled={this.state.hideExportNew}
-          onClick={() => setTimeout(() => dispatch(getOrders()), 2000)}
-          href={`${API_URL}/exportNew`}
-          label="Export NEW records"
-        />
-        <OrdersTable className="table" orders={orders} />
+        <div className="rimowaLogoText">RIMOWA</div>
+        <div className="rimowaSubtitle">Client Care</div>
+<div className="tableContainer">
+        <div className="labelButtonContainer">
+          <div className="pseudoDiv"></div>
+          <div className="tableLabel">REPAIR TICKETS</div>
+          <div className="exportButton"><WrappedButton
+            disabled={this.state.hideExportNew}
+            onClick={() => setTimeout(() => dispatch(getOrders()), 2000)}
+            href={`${API_URL}/exportNew`}
+            label="Export NEW records"
+          /></div>
+          </div>
+          <OrdersTable className="table" orders={orders} />
+        </div>
       </div>
     );
   }

@@ -52,7 +52,7 @@ export default class ClientForm extends React.Component {
         <WrappedButton
           onClick={this.handleSubmit}
           href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
-          label="Save client info"
+          label="Save and continue"
         />
       </div>
     );
