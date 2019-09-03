@@ -26,9 +26,9 @@ export default class Signature extends React.Component {
     this.signaturePad = null;
   }
 
-  printOrderInfo(order) {
+  async printOrderInfo(order) {
     const w = window.open();
-    w.document.write(getPDFTemplate(order));
+    await w.document.write(getPDFTemplate(order));
     w.print();
     w.close();
   }

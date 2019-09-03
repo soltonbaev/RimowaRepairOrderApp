@@ -41,9 +41,9 @@ export default class CustomizedTables extends React.Component {
 
   handleClose = () => this.setState({ anchorEl: null, orderToPreview: null });
 
-  printOrderInfo(order) {
+  async printOrderInfo(order) {
     const w = window.open();
-    w.document.write(getHTMLDBTemplate(order));
+    await w.document.write(getHTMLDBTemplate(order));
     w.print();
     w.close();
   }

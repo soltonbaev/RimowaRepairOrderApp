@@ -84,7 +84,7 @@ export const templateString = `
 
 <div class="signatureContainer" style="margin: 20px;text-align: center;">
 <h3 style="margin: 5% 0 5% 0;"> Client's Signature: </h3>
-<img class="signature-image" src="{{{signature}}}" style="max-width: 50%;box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);">
+<img class="signature-image" src="{{{signature}}}" style="max-width: 50%;box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);"/>
 </div>
 
 </div>
