@@ -16,6 +16,8 @@ import "./OrdersTable.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { Popover } from "@material-ui/core";
+import WrappedButton from "../WrappedButton";
+import { getPDFTemplate } from "../../templates/handlebar-template/handlebarToPdf";
 
 const TABLE_COLUMNS = [
   "Order placed",
@@ -38,11 +40,19 @@ export default class CustomizedTables extends React.Component {
 
   handleClose = () => this.setState({ anchorEl: null, orderToPreview: null });
 
+  printOrderInfo(order) {
+    const w = window.open();
+    w.document.write(getPDFTemplate(order));
+    w.print();
+    w.close();
+  }
+
   render() {
     const { orders } = this.props;
     return (
       <Paper className="root">
-        <Popover className="popoverContainer"
+        <Popover
+          className="popoverContainer"
           open={Boolean(this.state.anchorEl)}
           onClose={this.handleClose}
           anchorOrigin={{
@@ -55,6 +65,11 @@ export default class CustomizedTables extends React.Component {
           }}
         >
           <OrderPreview order={this.state.orderToPreview} />
+          <WrappedButton
+            className="printButton"
+            onClick={() => this.printOrderInfo(this.state.orderToPreview)}
+            label="Print"
+          />
         </Popover>
         <Table className="table">
           <TableHead className="head">

@@ -6,6 +6,7 @@ import { ROUTES } from "../../constants/routes";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import api from "../../api";
 import { getEmailTemplate } from "../../templates/handlebar-template/emailTemplate";
+import { getPDFTemplate } from "../../templates/handlebar-template/handlebarToPdf";
 import html2canvas from "html2canvas";
 import { green } from "@material-ui/core/colors";
 import classnames from "classnames"
@@ -20,6 +21,13 @@ export default class Signature extends React.Component {
       message: null,
       failed: false
     };
+  }
+
+  printOrderInfo(order) {
+    const w = window.open();
+    w.document.write(getPDFTemplate(order));
+    w.print();
+    w.close();
   }
 
   componentDidMount() {
@@ -95,10 +103,9 @@ export default class Signature extends React.Component {
                 />
               </div>
             ) : (
-
-                 <div className="statusMessageContainer">
+                <div className="statusMessageContainer">
                   <div className="statusMessage2">{!this.state.sent && <CircularProgress />} {this.state.message2}</div>
-               </div>
+                </div>
               )}
           </div>
         </div>
@@ -106,7 +113,11 @@ export default class Signature extends React.Component {
           {this.state.submitStarted ? (
             <div className="buttonWrapper"><WrappedButton href={ROUTES.HOME} label="Main menu" />
               <WrappedButton href={ROUTES.REPAIR_ORDERS.PATH} label="View Repair Tickets" />
-              <WrappedButton href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT} label="Add new ticket" /></div>
+              <WrappedButton href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT} label="Add new ticket" />
+              <WrappedButton
+                onClick={() => this.printOrderInfo(this.state.orderData)}
+                label="Print order info"
+              /></div>
           ) : (
               <WrappedButton
                 onClick={() => this.submitRepairOrder(this.state.orderData)}
