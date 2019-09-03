@@ -43,7 +43,7 @@ export default class CustomizedTables extends React.Component {
     const { orders } = this.props;
     return (
       <Paper className="root">
-        <Popover
+        <Popover className="popoverContainer"
           open={Boolean(this.state.anchorEl)}
           onClose={this.handleClose}
           anchorOrigin={{

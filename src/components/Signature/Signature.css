@@ -1,3 +1,19 @@
+.signPadContainer  .rimowaLogoText {
+  margin: 2% 0 0 0;
+  font-size: 25px;
+  font-weight: 400;
+  font-family: "Favorit Light", Arial, sans-serif;
+  color: #00000091;
+}
+
+.signPadContainer .rimowaSubtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  margin: 0% 0% 2% 0;
+  color: #00000091;
+}
+
 .signPadContainer {
   
   display: flex;
@@ -10,8 +26,7 @@
 
 .signPad {
   /*flex: 1;*/
-  max-width: 700px;
-  max-height: 500px;
+  width: 320px;
   border-radius: 10px;
   margin: 20px;
   box-shadow: 2px 2px 20px 0px;

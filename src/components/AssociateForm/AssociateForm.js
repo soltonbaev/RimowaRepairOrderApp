@@ -125,13 +125,14 @@ export default class AssociateForm extends React.Component {
         </div>
         <div className="row addItemButton">
           <WrappedButton onClick={this.addItem} label="Add another item" />
-        </div>
-        <div className="row">
           <WrappedButton
             onClick={this.submitForm}
             href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
             label="Save and Continue"
           />
+        </div>
+        <div className="row">
+         
         </div>
       </div>
     );

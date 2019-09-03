@@ -1,4 +1,4 @@
-.MuiPopover-paper{
+.popoverContainer .MuiPopover-paper{
   position:unset!important;
   max-width: 70%!important;
   margin:auto!important;
