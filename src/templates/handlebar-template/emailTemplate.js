@@ -3,6 +3,10 @@ Handlebars.registerHelper("inc", function(value, options) {
   return parseInt(value) + 1;
 });
 
+Handlebars.registerHelper("boolToStr", function(value, options) {
+  return value ? "Yes" : "No";
+});
+
 const templateString = `<div class="template-body" style="margin: 5%;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;">
 
 
@@ -38,17 +42,17 @@ const templateString = `<div class="template-body" style="margin: 5%;font-family
   </tr>
      <tr>
     <td style="padding: 2px 20px 2px 20px;"> Ship when complete:  </td>
-    <td style="padding: 2px 20px 2px 20px;">  {{shipWhenComplete}} </td>
+    <td style="padding: 2px 20px 2px 20px;">  {{boolToStr shipWhenComplete}} </td>
   </tr>
-  
+
 </table>
 </div>
 
 <div class="associateToCompleteTable" style="margin: 20px;border: 1px solid lightgrey;padding: 20px 10px;">
 <p class="ticketSummary" style="text-align: center;text-transform: uppercase;letter-spacing: 1px;font-size: 14px;"> You have requested to repair the following items:
   {{#each items as |item i|}}
-  
-        
+
+
         <table>
         <tr><th class="itemTitle" style="padding: 10px 20px;text-align: left;">Item {{inc i}}</th></tr>
   <tr>
@@ -73,7 +77,7 @@ const templateString = `<div class="template-body" style="margin: 5%;font-family
   </tr>
      <tr>
     <td style="padding: 2px 20px 2px 20px;">  Warranty:  </td>
-    <td style="padding: 2px 20px 2px 20px;"> {{warranty}} </td>
+    <td style="padding: 2px 20px 2px 20px;"> {{boolToStr warranty}} </td>
   </tr>
   </table>
 

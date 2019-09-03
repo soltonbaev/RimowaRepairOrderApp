@@ -8,8 +8,7 @@ import api from "../../api";
 import { getEmailTemplate } from "../../templates/handlebar-template/emailTemplate";
 import { getPDFTemplate } from "../../templates/handlebar-template/handlebarToPdf";
 import html2canvas from "html2canvas";
-import { green } from "@material-ui/core/colors";
-import classnames from "classnames"
+import classnames from "classnames";
 
 export default class Signature extends React.Component {
   constructor(props) {
@@ -19,8 +18,10 @@ export default class Signature extends React.Component {
       sent: false,
       submitStarted: false,
       message: null,
-      failed: false
+      failed: false,
+      signature: null
     };
+    this.signaturePad = null;
   }
 
   printOrderInfo(order) {
@@ -77,6 +78,17 @@ export default class Signature extends React.Component {
       }
     });
   };
+
+  submitSignature = () => {
+    if (this.signaturePad.isEmpty())
+      return new Error("Signature pad is empty!");
+    const signature = this.signaturePad.toDataURL();
+    const orderDataWithSignature = { ...this.state.orderData, signature };
+    this.setState({ orderData: orderDataWithSignature }, () =>
+      this.submitRepairOrder(this.state.orderData)
+    );
+  };
+
   render() {
     return (
       <div className="signPadContainer">
@@ -84,46 +96,62 @@ export default class Signature extends React.Component {
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>
           {this.state.submitStarted ? (
-            <div className={classnames("rimowaTitle", {
-              statusMsgSuccess: !this.state.failed,
-              statusMsgFailed: this.state.failed
-            })}>{this.state.message}</div>
+            <div
+              className={classnames("rimowaTitle", {
+                statusMsgSuccess: !this.state.failed,
+                statusMsgFailed: this.state.failed
+              })}
+            >
+              {this.state.message}
+            </div>
           ) : (
-              <div className="rimowaTitle">Sign your name below:</div>
-
-            )}
-
+            <div className="rimowaTitle">Sign your name below:</div>
+          )}
         </div>
         <div className="rimowaMid">
           <div className="signPadANDMessageContainer">
             {!this.state.submitStarted ? (
               <div className="signPad">
                 <SignaturePad
+                  ref={ref => (this.signaturePad = ref)}
                   options={{ minWidth: 1, maxWidth: 3, penColor: "black" }}
                 />
               </div>
             ) : (
-                <div className="statusMessageContainer">
-                  <div className="statusMessage2">{!this.state.sent && <CircularProgress />} {this.state.message2}</div>
+              <div className="statusMessageContainer">
+                <div className="statusMessage2">
+                  {!this.state.sent && <CircularProgress />}{" "}
+                  {this.state.message2}
                 </div>
-              )}
+              </div>
+            )}
           </div>
         </div>
         <div className="rimowaBottom">
           {this.state.submitStarted ? (
-            <div className="buttonWrapper"><WrappedButton href={ROUTES.HOME} label="Main menu" />
-              <WrappedButton href={ROUTES.REPAIR_ORDERS.PATH} label="View Repair Tickets" />
-              <WrappedButton href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT} label="Add new ticket" />
+            <div className="buttonWrapper">
+              <WrappedButton href={ROUTES.HOME} label="Main menu" />
+              <WrappedButton
+                href={ROUTES.REPAIR_ORDERS.PATH}
+                label="View Repair Tickets"
+              />
+              <WrappedButton
+                href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
+                label="Add new ticket"
+              />
               <WrappedButton
                 onClick={() => this.printOrderInfo(this.state.orderData)}
                 label="Print order info"
-              /></div>
-          ) : (
-              <WrappedButton
-                onClick={() => this.submitRepairOrder(this.state.orderData)}
-                label="Complete by submitting signature"
               />
-            )}
+            </div>
+          ) : (
+            <WrappedButton
+              onClick={() => {
+                this.submitSignature();
+              }}
+              label="Complete by submitting signature"
+            />
+          )}
         </div>
       </div>
     );
