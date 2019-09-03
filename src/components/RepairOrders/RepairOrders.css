@@ -1,4 +1,4 @@
-.tableContainer .rimowaLogoText {
+/* .tableContainer .rimowaLogoText {
   margin: 1% 0 0 0;
   font-size: 25px;
   font-weight: 400;
@@ -12,7 +12,7 @@
   font-size: 10px;
   margin: 0% 0% 1% 0;
   color: #00000091;
-}
+} */
 
 .tableContainer {
   display: flex;

@@ -7,8 +7,14 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="homeContainer">
+        <div className="rimowaTop">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
+        </div>
+        <div className="rimowaMid">
+        <div className="rimowaTitle">Welcome <br/><br/>to Rimowa's repair ticket <br/><br/>management web app</div>
+        <div className="buttonWrapper">
+        
         <WrappedButton
           variant="outlined"
           className="button"
@@ -20,7 +26,11 @@ export default class Home extends React.Component {
           className="button"
           href={ROUTES.REPAIR_ORDERS.PATH}
           label="View repair tickets"
-        />
+        /></div>
+        </div>
+        <div className="rimowaBottom">
+         
+        </div>
       </div>
     );
   }

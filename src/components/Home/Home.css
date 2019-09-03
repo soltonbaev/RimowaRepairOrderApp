@@ -1,3 +1,45 @@
+/* GLOBAL */
+
+.rimowaTop{
+  height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.rimowaMid {
+  height:60%;
+  display: flex;
+  margin: 0 25% 0 25%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.rimowaBottom {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.rimowaTitle {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  justify-content: center;
+  padding:20px 0 0 0;
+}
+
+/*END GLOBAL*/
+
+.buttonWrapper {
+  display: inherit;
+  margin-left: auto;
+    margin-right: auto;
+
+}
+
 .homeContainer {
   display: flex;
   align-items: center;
@@ -13,8 +55,8 @@
 }
 
 .rimowaLogoText {
-  margin: 2% 0 0 0;
-  font-size: 42px;
+  margin: 1% 0 0 0;
+  font-size: 25px;
   font-weight: 400;
   font-family: "Favorit Light", Arial, sans-serif;
   color: #00000091;
@@ -23,7 +65,7 @@
 .rimowaSubtitle {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 15px;
-  margin: 0% 0% 2% 0;
+  font-size: 12px;
+  margin: 0% 0% 1% 0;
   color: #00000091;
 }

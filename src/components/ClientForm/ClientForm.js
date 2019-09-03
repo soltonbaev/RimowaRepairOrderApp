@@ -44,17 +44,22 @@ export default class ClientForm extends React.Component {
   render() {
     return (
       <div className="formContainer clientFormContainer">
-        <div className="rimowaLogoText">RIMOWA</div>
-        <div className="rimowaSubtitle">Client Care</div>
-
-        <div className="formLabel">Client to complete:</div>
-        <Form />
-        <WrappedButton
-          onClick={this.handleSubmit}
-          href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
-          label="Save and continue"
-        />
-      </div>
+        
+        <div className="rimowaTop">
+          <div className="rimowaLogoText">RIMOWA</div>
+          <div className="rimowaSubtitle">Client Care</div>
+          <div className="rimowaTitle">Client to complete:</div>
+        </div>
+        <div className="rimowaMid">
+          
+          <Form />
+        </div>
+        <div className="rimowaBottom"><WrappedButton
+        onClick={this.handleSubmit}
+        href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
+        label="Save and continue"
+        /></div>
+      </div >
     );
   }
 }

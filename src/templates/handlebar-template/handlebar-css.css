@@ -1,4 +1,4 @@
-.MuiPopover-paper{
+.popoverContainer .MuiPopover-paper{
   position:unset!important;
   max-width: 70%!important;
   margin:auto!important;
@@ -13,7 +13,7 @@
   font-size: 14px;  
 }
 
-
+/* 
 .rimowaLogoText {
   text-align:center;
   margin: 5px;
@@ -30,7 +30,7 @@
   font-size: 10px;
   margin: 0% 0% 2% 0;
   color: #00000091;
-}
+} */
 
 .signature-image{
  max-width: 50%;
