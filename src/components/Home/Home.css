@@ -1,4 +1,10 @@
 /* GLOBAL */
+/*remove extra information when printing html */
+@page { size: auto;  margin: 0mm; }
+@media print {
+  .header, .hide { visibility: hidden }
+  }
+
 
 .rimowaTop{
   height: 20%;
@@ -41,6 +47,8 @@
     text-align: center;
   }
 }
+
+
 
 /*END GLOBAL*/
 

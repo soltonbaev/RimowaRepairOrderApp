@@ -19,13 +19,13 @@ export default class Home extends React.Component {
           variant="outlined"
           className="button"
           href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
-          label="Add repair ticket"
+          label="new ticket"
         />
         <WrappedButton
           variant="outlined"
           className="button"
           href={ROUTES.REPAIR_ORDERS.PATH}
-          label="View repair tickets"
+          label="View all"
         /></div>
         </div>
         <div className="rimowaBottom">

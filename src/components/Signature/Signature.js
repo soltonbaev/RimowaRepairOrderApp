@@ -53,17 +53,18 @@ export default class Signature extends React.Component {
   submitRepairOrder = orderData => {
     this.setState({ submitStarted: true });
     api.orders.addOrder(orderData).then(data => {
-      console.log(data);
       if (data.error && data.error.errors && data.error.errors.length) {
         this.setState({
           message: `Error: ${data.error.errors[0].message}`,
+          message2: "Something is wrong. Contact your system administrator",
           sent: true,
           failed: true
         });
         return;
       } else if (data.status === 0) {
         this.setState({
-          message: "Failed to insert information to database",
+          message: "Failed to submit ticket",
+          message2: "Something is wrong. Contact your system administrator",
           sent: true,
           failed: true
         });
@@ -109,23 +110,20 @@ export default class Signature extends React.Component {
           )}
         </div>
         <div className="rimowaMid">
-          <div className="signPadANDMessageContainer">
-            {!this.state.submitStarted ? (
-              <div className="signPad">
-                <SignaturePad
-                  ref={ref => (this.signaturePad = ref)}
-                  options={{ minWidth: 1, maxWidth: 3, penColor: "black" }}
-                />
+          {!this.state.submitStarted ? (
+            <div className="signPad">
+              <SignaturePad
+                ref={ref => (this.signaturePad = ref)}
+                options={{ minWidth: 1, maxWidth: 3, penColor: "black" }}
+              />
+            </div>
+          ) : (
+            <div className="statusMessageContainer">
+              <div className="statusMessage2">
+                {!this.state.sent && <CircularProgress />} {this.state.message2}
               </div>
-            ) : (
-              <div className="statusMessageContainer">
-                <div className="statusMessage2">
-                  {!this.state.sent && <CircularProgress />}{" "}
-                  {this.state.message2}
-                </div>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className="rimowaBottom">
           {this.state.submitStarted ? (
@@ -133,22 +131,20 @@ export default class Signature extends React.Component {
               <WrappedButton href={ROUTES.HOME} label="Main menu" />
               <WrappedButton
                 href={ROUTES.REPAIR_ORDERS.PATH}
-                label="View Repair Tickets"
+                label="View Tickets"
               />
               <WrappedButton
                 href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
-                label="Add new ticket"
+                label="New ticket"
               />
               <WrappedButton
                 onClick={() => this.printOrderInfo(this.state.orderData)}
-                label="Print order info"
+                label="Print this ticket"
               />
             </div>
           ) : (
             <WrappedButton
-              onClick={() => {
-                this.submitSignature();
-              }}
+              onClick={() => this.submitRepairOrder(this.state.orderData)}
               label="Complete by submitting signature"
             />
           )}

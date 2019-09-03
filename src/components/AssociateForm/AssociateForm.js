@@ -124,7 +124,9 @@ export default class AssociateForm extends React.Component {
                   );
                 })}
             </Tabs>
-            <div className="row">{items[tab]}</div>
+            {/* <div className="row"> */}
+            {items[tab]}
+            {/* </div> */}
           </Paper>
         </div>
         </div>
