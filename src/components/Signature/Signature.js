@@ -1,5 +1,6 @@
 import React from "react";
 import "./Signature.css";
+import { Redirect } from "react-router-dom";
 import SignaturePad from "react-signature-pad-wrapper";
 import WrappedButton from "../WrappedButton";
 import { ROUTES } from "../../constants/routes";
@@ -19,7 +20,8 @@ export default class Signature extends React.Component {
       submitStarted: false,
       message: null,
       failed: false,
-      signature: null
+      signature: null,
+      emptyOrder: false
     };
     this.signaturePad = null;
   }
@@ -33,6 +35,8 @@ export default class Signature extends React.Component {
 
   componentDidMount() {
     window.html2canvas = html2canvas;
+    if (!window.sessionStorage.length)
+      return this.setState({ emptyOrder: true });
     const orderItems = JSON.parse(window.sessionStorage.itemsList);
     const clientInfo = JSON.parse(window.sessionStorage.clientInfo);
     const associateName = window.sessionStorage.associateName;
@@ -90,7 +94,9 @@ export default class Signature extends React.Component {
   };
 
   render() {
-    return (
+    return this.state.emptyOrder ? (
+      <Redirect to={ROUTES.HOME} />
+    ) : (
       <div className="signPadContainer">
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
