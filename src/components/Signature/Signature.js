@@ -75,6 +75,7 @@ export default class Signature extends React.Component {
           message2: "Go to 'View Repair Tickets' page to print out the ticket",
           sent: true
         });
+        window.sessionStorage.clear();
         return;
       }
     });
@@ -85,9 +86,7 @@ export default class Signature extends React.Component {
       return new Error("Signature pad is empty!");
     const signature = this.signaturePad.toDataURL();
     const orderDataWithSignature = { ...this.state.orderData, signature };
-    this.setState({ orderData: orderDataWithSignature }, () =>
-      this.submitRepairOrder(this.state.orderData)
-    );
+    this.submitRepairOrder(orderDataWithSignature);
   };
 
   render() {
@@ -144,7 +143,7 @@ export default class Signature extends React.Component {
             </div>
           ) : (
             <WrappedButton
-              onClick={() => this.submitRepairOrder(this.state.orderData)}
+              onClick={() => this.submitSignature()}
               label="Complete by submitting signature"
             />
           )}
