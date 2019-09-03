@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { Popover } from "@material-ui/core";
 import WrappedButton from "../WrappedButton";
-import { getPDFTemplate } from "../../templates/handlebar-template/handlebarToPdf";
+import { getHTMLDBTemplate } from "../../templates/handlebar-template/handlebarPrintHMTL";
 
 const TABLE_COLUMNS = [
   "Order placed",
@@ -42,7 +42,7 @@ export default class CustomizedTables extends React.Component {
 
   printOrderInfo(order) {
     const w = window.open();
-    w.document.write(getPDFTemplate(order));
+    w.document.write(getHTMLDBTemplate(order));
     w.print();
     w.close();
   }
