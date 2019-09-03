@@ -1,6 +1,7 @@
 import Handlebars from "handlebars";
 
-export const templateString = `<div class="template-body" style="padding: 2%;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;">
+export const templateString = `
+<div class="template-body" style="padding: 2%;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;">
 <div class="template-body" style="padding: 2%;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;">
 <div class="rimowaLogoText" style="text-align: center;margin: 5px;font-size: 25px;font-weight: 400;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;color: #00000091;">RIMOWA</div>
 <p class="rimowaSubtitle" style="text-align: center;text-transform: uppercase;letter-spacing: 2px;font-size: 10px;margin: 0% 0% 2% 0;color: #00000091;">Client Care</p>

@@ -15,7 +15,7 @@
 } */
 
 .associateBodyContainer {
-  margin:auto;
+  /* margin:auto; */
 }
 .associateFormContainer {
   /* margin: 0 auto;
@@ -44,7 +44,7 @@
 .associateFormContainer .inputField {
   /* flex: 1; */
   margin: 0 10px 0 10px;
-  /* width:100%; */
+  width:80%;
   /* max-width: 300px */
 }
 

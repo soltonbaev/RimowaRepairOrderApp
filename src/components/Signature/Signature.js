@@ -56,13 +56,15 @@ export default class Signature extends React.Component {
       if (data.error && data.error.errors && data.error.errors.length) {
         this.setState({
           message: `Error: ${data.error.errors[0].message}`,
+          message2: "Something is wrong. Contact your system administrator",
           sent: true,
           failed: true
         });
         return;
       } else if (data.status === 0) {
         this.setState({
-          message: "Failed to insert information to database",
+          message: "Failed to submit ticket",
+          message2: "Something is wrong. Contact your system administrator",
           sent: true,
           failed: true
         });
@@ -95,7 +97,7 @@ export default class Signature extends React.Component {
 
         </div>
         <div className="rimowaMid">
-          <div className="signPadANDMessageContainer">
+          {/* <div className="signPadANDMessageContainer"> */}
             {!this.state.submitStarted ? (
               <div className="signPad">
                 <SignaturePad
@@ -108,15 +110,15 @@ export default class Signature extends React.Component {
                 </div>
               )}
           </div>
-        </div>
+        {/* </div> */}
         <div className="rimowaBottom">
           {this.state.submitStarted ? (
             <div className="buttonWrapper"><WrappedButton href={ROUTES.HOME} label="Main menu" />
-              <WrappedButton href={ROUTES.REPAIR_ORDERS.PATH} label="View Repair Tickets" />
-              <WrappedButton href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT} label="Add new ticket" />
+              <WrappedButton href={ROUTES.REPAIR_ORDERS.PATH} label="View Tickets" />
+              <WrappedButton href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT} label="New ticket" />
               <WrappedButton
                 onClick={() => this.printOrderInfo(this.state.orderData)}
-                label="Print order info"
+                label="Print this ticket"
               /></div>
           ) : (
               <WrappedButton
