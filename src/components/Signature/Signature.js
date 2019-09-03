@@ -6,6 +6,7 @@ import { ROUTES } from "../../constants/routes";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import api from "../../api";
 import { getEmailTemplate } from "../../templates/handlebar-template/emailTemplate";
+import { getPDFTemplate } from "../../templates/handlebar-template/handlebarToPdf";
 import html2canvas from "html2canvas";
 
 export default class Signature extends React.Component {
@@ -17,6 +18,13 @@ export default class Signature extends React.Component {
       submitStarted: false,
       message: null
     };
+  }
+
+  printOrderInfo(order) {
+    const w = window.open();
+    w.document.write(getPDFTemplate(order));
+    w.print();
+    w.close();
   }
 
   componentDidMount() {
@@ -91,7 +99,13 @@ export default class Signature extends React.Component {
         </div>
         <div className="rimowaBottom">
           {this.state.submitStarted ? (
-            <WrappedButton href={ROUTES.HOME} label="Main menu" />
+            <div>
+              <WrappedButton href={ROUTES.HOME} label="Main menu" />
+              <WrappedButton
+                onClick={() => this.printOrderInfo(this.state.orderData)}
+                label="Print order info"
+              />
+            </div>
           ) : (
             <WrappedButton
               onClick={() => this.submitRepairOrder(this.state.orderData)}

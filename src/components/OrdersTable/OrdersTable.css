@@ -17,6 +17,10 @@
   font-size: 14;
 }
 
+.tableRow {
+  border: 1px solid white;
+}
+
 .tableRow:hover {
   border: 2px solid black;
 }
@@ -33,4 +37,11 @@
 
 .edit:hover {
   color: blue;
+}
+
+.printButton {
+  display: flex;
+  margin-bottom: 20px !important;
+  margin-top: -20px !important;
+  justify-content: center;
 }
