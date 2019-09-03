@@ -88,9 +88,12 @@ export default class AssociateForm extends React.Component {
     const { items, tab, submitted } = this.state;
     return (
       <div className="formContainer associateFormContainer">
+         <div className="rimowaTop">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
-        <div className="formLabel">Associate to complete:</div>
+        </div>
+        <div className="rimowaMid">
+        <div className="rimowaTitle">Associate to complete:</div>
         <div className="row">
    
           <Input
@@ -123,6 +126,8 @@ export default class AssociateForm extends React.Component {
             <div className="row">{items[tab]}</div>
           </Paper>
         </div>
+        </div>
+        <div className="rimowaBottom">
         <div className="row addItemButton">
           <WrappedButton onClick={this.addItem} label="Add another item" />
           <WrappedButton
@@ -132,6 +137,7 @@ export default class AssociateForm extends React.Component {
           />
         </div>
         <div className="row">
+        </div>
          
         </div>
       </div>

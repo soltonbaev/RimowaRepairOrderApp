@@ -1,4 +1,4 @@
-.signPadContainer  .rimowaLogoText {
+/* .signPadContainer  .rimowaLogoText {
   margin: 2% 0 0 0;
   font-size: 25px;
   font-weight: 400;
@@ -12,11 +12,11 @@
   font-size: 10px;
   margin: 0% 0% 2% 0;
   color: #00000091;
-}
+} */
 
 .signPadContainer {
   
-  display: flex;
+  //display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -26,7 +26,7 @@
 
 .signPad {
   /*flex: 1;*/
-  width: 320px;
+  /* width: 320px; */
   border-radius: 10px;
   margin: 20px;
   box-shadow: 2px 2px 20px 0px;

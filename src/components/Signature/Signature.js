@@ -40,18 +40,24 @@ export default class Signature extends React.Component {
   render() {
     return (
       <div className="signPadContainer">
+        <div className="rimowaTop">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
-        <div className="signTitle">Sign your name below</div>
+        </div>
+        <div className="rimowaMid">
+        <div className="rimowaTitle">Sign your name below</div>
         <div className="signPad">
           <SignaturePad
             options={{ minWidth: 1, maxWidth: 3, penColor: "black" }}
           />
         </div>
+        </div>
+        <div className="rimowaBottom">
         <WrappedButton
           onClick={() => this.submitRepairOrder(this.state.orderData)}
           label="Complete by submitting signature"
         />
+        </div>
       </div>
     );
   }
