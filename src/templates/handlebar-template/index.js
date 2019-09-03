@@ -31,11 +31,11 @@ const templateString = `<div class="template-body">
   </tr>
      <tr>
     <td>  Shipping Address:  </td>
-    <td> {{customer.shippingAddress}} </td>
+    <td> {{shippingAddress}} </td>
   </tr>
      <tr>
     <td> Ship when complete:  </td>
-    <td>  {{customer.shipWhenComplete}} </td>
+    <td>  {{shipWhenComplete}} </td>
   </tr>
   
 </table>

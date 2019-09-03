@@ -34,8 +34,7 @@ export default class CustomizedTables extends React.Component {
     orderToPreview: null
   };
 
-  showPreview = (anchorEl, order) =>
-    this.setState({ anchorEl, orderToPreview: order });
+  showPreview = (anchorEl, order) => { console.log(order); this.setState({ anchorEl, orderToPreview: order }) };
 
   handleClose = () => this.setState({ anchorEl: null, orderToPreview: null });
 

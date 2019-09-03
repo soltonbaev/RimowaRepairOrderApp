@@ -7,6 +7,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import api from "../../api";
 import { getEmailTemplate } from "../../templates/handlebar-template/emailTemplate";
 import html2canvas from "html2canvas";
+import { green } from "@material-ui/core/colors";
+import classnames from "classnames"
 
 export default class Signature extends React.Component {
   constructor(props) {
@@ -15,7 +17,8 @@ export default class Signature extends React.Component {
       orderData: null,
       sent: false,
       submitStarted: false,
-      message: null
+      message: null,
+      failed: false
     };
   }
 
@@ -45,18 +48,21 @@ export default class Signature extends React.Component {
       if (data.error && data.error.errors && data.error.errors.length) {
         this.setState({
           message: `Error: ${data.error.errors[0].message}`,
-          sent: true
+          sent: true,
+          failed: true
         });
         return;
-      } else if (data.error || data.status === 0) {
+      } else if (data.status === 0) {
         this.setState({
           message: "Failed to insert information to database",
-          sent: true
+          sent: true,
+          failed: true
         });
         return;
       } else {
         this.setState({
-          message: "Repair order successfully submitted",
+          message: "Ticket has been submitted sucessfully",
+          message2: "Go to 'View Repair Tickets' page to print out the ticket",
           sent: true
         });
         return;
@@ -69,35 +75,44 @@ export default class Signature extends React.Component {
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>
-          <div className="rimowaTitle">Sign your name below:</div>
+          {this.state.submitStarted ? (
+            <div className={classnames("rimowaTitle", {
+              statusMsgSuccess: !this.state.failed,
+              statusMsgFailed: this.state.failed
+            })}>{this.state.message}</div>
+          ) : (
+              <div className="rimowaTitle">Sign your name below:</div>
+
+            )}
+
         </div>
         <div className="rimowaMid">
           <div className="signPadANDMessageContainer">
             {!this.state.submitStarted ? (
-              <div>
-                <div className="signPad">
-                  <SignaturePad
-                    options={{ minWidth: 1, maxWidth: 3, penColor: "black" }}
-                  />
-                </div>
+              <div className="signPad">
+                <SignaturePad
+                  options={{ minWidth: 1, maxWidth: 3, penColor: "black" }}
+                />
               </div>
             ) : (
-              <div>
-                {!this.state.sent && <CircularProgress />}
-                <h3>{this.state.message}</h3>
-              </div>
-            )}
+
+                 <div className="statusMessageContainer">
+                  <div className="statusMessage2">{!this.state.sent && <CircularProgress />} {this.state.message2}</div>
+               </div>
+              )}
           </div>
         </div>
         <div className="rimowaBottom">
           {this.state.submitStarted ? (
-            <WrappedButton href={ROUTES.HOME} label="Main menu" />
+            <div className="buttonWrapper"><WrappedButton href={ROUTES.HOME} label="Main menu" />
+              <WrappedButton href={ROUTES.REPAIR_ORDERS.PATH} label="View Repair Tickets" />
+              <WrappedButton href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT} label="Add new ticket" /></div>
           ) : (
-            <WrappedButton
-              onClick={() => this.submitRepairOrder(this.state.orderData)}
-              label="Complete by submitting signature"
-            />
-          )}
+              <WrappedButton
+                onClick={() => this.submitRepairOrder(this.state.orderData)}
+                label="Complete by submitting signature"
+              />
+            )}
         </div>
       </div>
     );

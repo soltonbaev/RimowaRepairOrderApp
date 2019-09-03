@@ -11,23 +11,23 @@ export const templateString = `<div class="template-body">
 <tr><th>Client to Complete:</th></tr>
   <tr>
     <td>First Name:</td>
-    <td>{{firstName}}</td>
+    <td>{{customer.firstName}}</td>
   </tr>
   <tr>
     <td>Last Name: </td>
-    <td>{{lastName}}</td>
+    <td>{{customer.lastName}}</td>
   </tr>
   <tr>
     <td>Email: </td>
-    <td>{{email}}</td>
+    <td>{{customer.email}}</td>
   </tr>
    <tr>
     <td>Phone:  </td>
-    <td>{{phone}}</td>
+    <td>{{customer.phone}}</td>
   </tr>
    <tr>
     <td> Company Name: </td>
-    <td>  {{companyName}} </td>
+    <td>  {{customer.companyName}} </td>
   </tr>
      <tr>
     <td>  Shipping Address:  </td>
@@ -46,11 +46,11 @@ export const templateString = `<div class="template-body">
  <tr><th>Associate to Complete:</th>
  <tr><td>Associate Name:</td>
  <td>{{associateName}}</td></tr></table>
-  {{#each items as |item i|}}
+  {{#each customer.customer_items as |item i|}}
 
 
         <table>
-        <tr><th class="itemTitle">Item {{inc i}}</th></tr>
+        <tr><th class="itemTitle">Item {{i}}</th></tr>
   <tr>
     <td>Due date:</td>
     <td>{{needsBy}}</td>
