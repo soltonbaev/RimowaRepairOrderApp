@@ -43,9 +43,10 @@ export default class Signature extends React.Component {
         <div className="rimowaTop">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
+        <div className="rimowaTitle">Sign your name below:</div>
         </div>
         <div className="rimowaMid">
-        <div className="rimowaTitle">Sign your name below</div>
+        
         <div className="signPad">
           <SignaturePad
             options={{ minWidth: 1, maxWidth: 3, penColor: "black" }}

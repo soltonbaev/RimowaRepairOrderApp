@@ -48,9 +48,10 @@ export default class ClientForm extends React.Component {
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>
+          <div className="rimowaTitle">Client to complete:</div>
         </div>
         <div className="rimowaMid">
-          <div className="rimowaTitle">Client to complete:</div>
+          
           <Form />
         </div>
         <div className="rimowaBottom"><WrappedButton

@@ -91,9 +91,10 @@ export default class AssociateForm extends React.Component {
          <div className="rimowaTop">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
+        <div className="rimowaTitle">Associate to complete:</div>
         </div>
         <div className="rimowaMid">
-        <div className="rimowaTitle">Associate to complete:</div>
+        <div className="associateBodyContainer">
         <div className="row">
    
           <Input
@@ -127,6 +128,7 @@ export default class AssociateForm extends React.Component {
           </Paper>
         </div>
         </div>
+        </div>
         <div className="rimowaBottom">
         <div className="row addItemButton">
           <WrappedButton onClick={this.addItem} label="Add another item" />
@@ -136,8 +138,7 @@ export default class AssociateForm extends React.Component {
             label="Save and Continue"
           />
         </div>
-        <div className="row">
-        </div>
+  
          
         </div>
       </div>
