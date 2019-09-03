@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 
-const templateString = `<div class="template-body">
+export const templateString = `<div class="template-body">
 <div class="template-body">
 <div class="rimowaLogoText">RIMOWA</div>
 <p class="rimowaSubtitle">Client Care</p>
@@ -37,7 +37,7 @@ const templateString = `<div class="template-body">
     <td> Ship when complete:  </td>
     <td>  {{shipWhenComplete}} </td>
   </tr>
-  
+
 </table>
 </div>
 
@@ -47,8 +47,8 @@ const templateString = `<div class="template-body">
  <tr><td>Associate Name:</td>
  <td>{{associateName}}</td></tr></table>
   {{#each items as |item i|}}
-  
-        
+
+
         <table>
         <tr><th class="itemTitle">Item {{i}}</th></tr>
   <tr>
@@ -90,6 +90,6 @@ const templateString = `<div class="template-body">
 
 const templateFunction = Handlebars.compile(templateString);
 
-export const getEmailTemplate = data => {
+export const getPDFTemplate = data => {
   return templateFunction(data);
 };
