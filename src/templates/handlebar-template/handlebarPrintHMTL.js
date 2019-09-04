@@ -1,5 +1,8 @@
 import Handlebars from "handlebars";
-
+import moment from "moment";
+Handlebars.registerHelper("dateConvert", function(value, options) {
+  return moment(value).format("MMM DD YYYY");
+});
 export const templateString = `
 <div class="template-body" style="padding: 2%;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;">
 <div class="template-body" style="padding: 2%;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;">
@@ -54,7 +57,7 @@ export const templateString = `
         <tr><th class="itemTitle" style="padding: 10px 20px;text-align: left;">Item {{inc i}}</th></tr>
   <tr>
     <td style="padding: 2px 20px 2px 20px;">Due date:</td>
-    <td style="padding: 2px 20px 2px 20px;">{{needsBy}}</td>
+    <td style="padding: 2px 20px 2px 20px;">{{dateConvert needsBy}}</td>
   </tr>
   <tr>
     <td style="padding: 2px 20px 2px 20px;">Serial Number: </td>

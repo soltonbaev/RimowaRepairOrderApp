@@ -1,10 +1,15 @@
 import Handlebars from "handlebars";
+import moment from "moment";
 Handlebars.registerHelper("inc", function(value, options) {
   return parseInt(value) + 1;
 });
 
 Handlebars.registerHelper("boolToStr", function(value, options) {
   return value ? "Yes" : "No";
+});
+
+Handlebars.registerHelper("dateConvert", function(value, options) {
+  return moment(value).format("MMM DD YYYY");
 });
 
 const templateString = `<div class="template-body" style="margin: 5%;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;">
@@ -57,7 +62,7 @@ const templateString = `<div class="template-body" style="margin: 5%;font-family
         <tr><th class="itemTitle" style="padding: 10px 20px;text-align: left;">Item {{inc i}}</th></tr>
   <tr>
     <td style="padding: 2px 20px 2px 20px;">Due date:</td>
-    <td style="padding: 2px 20px 2px 20px;">{{needsBy}}</td>
+    <td style="padding: 2px 20px 2px 20px;">{{dateConvert needsBy}}</td>
   </tr>
   <tr>
     <td style="padding: 2px 20px 2px 20px;">Serial Number: </td>

@@ -1,5 +1,9 @@
 import Handlebars from "handlebars";
 import "./handlebar-css.css";
+import moment from "moment";
+Handlebars.registerHelper("dateConvert", function(value, options) {
+  return moment(value).format("MMM DD YYYY");
+});
 Handlebars.registerHelper("inc", function(value, options) {
   return parseInt(value) + 1;
 });
@@ -37,7 +41,7 @@ const templateString = `<div class="template-body">
     <td> Ship when complete:  </td>
     <td>  {{shipWhenComplete}} </td>
   </tr>
-  
+
 </table>
 </div>
 
@@ -47,13 +51,13 @@ const templateString = `<div class="template-body">
  <tr><td>Associate Name:</td>
  <td>{{associateName}}</td></tr></table>
   {{#each customer.customer_items as |item i|}}
-  
-        
+
+
         <table>
         <tr><th class="itemTitle">Item {{inc i}}</th></tr>
   <tr>
     <td>Due date:</td>
-    <td>{{needsBy}}</td>
+    <td>{{dateConvert needsBy}}</td>
   </tr>
   <tr>
     <td>Serial Number: </td>

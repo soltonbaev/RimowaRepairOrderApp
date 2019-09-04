@@ -102,8 +102,6 @@ export default class CustomizedTables extends React.Component {
               >
                 <TableCell align="center">
                   {moment(order.creationDate).format("MMM DD YYYY")}
-                  <br />
-                  {moment(order.creationDate).format("hh:mm A")}
                 </TableCell>
                 <TableCell align="center">
                   {`${order.customer.firstName} ${order.customer.lastName}`}
