@@ -6,14 +6,15 @@ Handlebars.registerHelper("dateConvert", function (value, options) {
 export const templateString = `
 
         <div class="pageContainer" style="border: 1px solid lightgrey;  width: 100vw; height: 100vh; page-break-after: always;">
+        <div class="rimowaLogoWrapper" style="padding:40px";>
                     <div class="rimowaLogoText" style="text-align: center;margin: 5px;font-size: 25px;font-weight: 400;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;color: #00000091;">
                     RIMOWA
                     </div>
                 <p class="rimowaSubtitle" style="text-align: center;text-transform: uppercase;letter-spacing: 2px;font-size: 10px;margin: 0% 0% 2% 0;color: #00000091;">Client Care</p>
+        </div>
                 <p class="ticketSummary" style="text-align: center;text-transform: uppercase;letter-spacing: 1px;font-size: 14px;"> Ticket Summary </p>
 
-
-                <div class="clientToCompleteTable" style=" border: 1px solid grey;padding: 20px 10px;margin: 20px;">
+                <div class="clientToCompleteTable" style="font-size: 20px; border: 1px solid lightgrey;padding: 40px 10px;margin: 40px;">
 
                     <table>
                     <tr><th style="padding: 10px 20px;text-align: left;">Client to Complete:</th></tr>
@@ -60,7 +61,15 @@ export const templateString = `
   {{#each customer.customer_items as |item i|}}
  
   <div class="pageContainer"style="width: 100vw; height: 100vh; page-break-after: always; border: 1px solid lightgrey;">
+  <div class="rimowaLogoWrapper" style="padding: 40px;">
+  <div class="rimowaLogoText" style="text-align: center;margin: 5px;font-size: 25px;font-weight: 400;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;color: #00000091;">
+  RIMOWA
+  </div>
+<p class="rimowaSubtitle" style="text-align: center;text-transform: uppercase;letter-spacing: 2px;font-size: 10px;margin: 0% 0% 2% 0;color: #00000091;">Client Care</p>
+</div>
 
+<p class="ticketSummary" style="text-align: center;text-transform: uppercase;letter-spacing: 1px;font-size: 14px;"> Ticket for {{customer.firstName}} {{customer.lastName}} Item {{inc i}}  </p>
+<div class="associateTableContainer" style="font-size: 20px; border: 1px solid lightgrey;padding: 40px 10px;margin: 40px;">
   <table>
 <tr><th style="padding: 10px 20px;text-align: left;">Associate to Complete:</th>
 </tr><tr><td style="padding: 2px 20px 2px 20px;">Associate Name:</td>
@@ -92,6 +101,7 @@ export const templateString = `
         <td style="padding: 2px 20px 2px 20px;"> {{warranty}} </td>
       </tr>
       </table>
+      </div>
   </div>
       {{/each}}
 
