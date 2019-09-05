@@ -5,6 +5,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import DatePicker from "../DatePicker";
 import Input from "../CustomInput";
+
+function inputField(props) {
+  const { input, ...rest } = props;
+  return <Input {...input} {...rest} />;
+}
+
 const createItemForm = itemNum => {
   let ItemForm = props => {
     const { handleSubmit } = props;
@@ -28,49 +34,33 @@ const createItemForm = itemNum => {
           <div className="row">
             <Field
               name="serialNumber"
-              component={({ input }) => (
-                <Input
-                  {...input}
-                  className="inputField"
-                  label="Serial Number #"
-                  margin="normal"
-                />
-              )}
+              className="inputField"
+              label="Serial Number #"
+              margin="normal"
+              component={inputField}
             />
             <Field
               name="lockCombo"
-              component={({ input }) => (
-                <Input
-                  {...input}
-                  className="inputField"
-                  label="Lock Combo"
-                  margin="normal"
-                />
-              )}
+              className="inputField"
+              label="Lock Combo"
+              margin="normal"
+              component={inputField}
             />
           </div>
           <div className="row">
             <Field
               name="model"
-              component={({ input }) => (
-                <Input
-                  {...input}
-                  className="inputField"
-                  label="Model"
-                  margin="normal"
-                />
-              )}
+              className="inputField"
+              label="Model"
+              margin="normal"
+              component={inputField}
             />
             <Field
               name="reasonForRepair"
-              component={({ input }) => (
-                <Input
-                  {...input}
-                  className="inputField"
-                  label="Reason for repair"
-                  margin="normal"
-                />
-              )}
+              className="inputField"
+              label="Reason for repair"
+              margin="normal"
+              component={inputField}
             />
           </div>
           <div className="checkboxContainer">
@@ -103,7 +93,8 @@ const createItemForm = itemNum => {
   })(ItemForm);
 
   ItemForm = connect(state => ({
-    initialValues: state.form[`item-${itemNum}`] && state.form[`item-${itemNum}`].values
+    initialValues:
+      state.form[`item-${itemNum}`] && state.form[`item-${itemNum}`].values
   }))(ItemForm);
 
   return ItemForm;

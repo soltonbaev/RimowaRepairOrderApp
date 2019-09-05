@@ -5,6 +5,11 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Input from "../CustomInput";
 
+function inputField(props) {
+  const { input, ...rest } = props;
+  return <Input {...input} {...rest} />;
+}
+
 let ClientForm = props => {
   const { handleSubmit } = props;
   return (
@@ -13,73 +18,49 @@ let ClientForm = props => {
         <div className="row">
           <Field
             name="firstName"
-            component={({ input }) => (
-              <Input
-                {...input}
-                className="inputField"
-                label="First Name"
-                margin="normal"
-              />
-            )}
+            className="inputField"
+            label="First Name"
+            margin="normal"
+            component={inputField}
           />
           <Field
             name="lastName"
-            component={({ input }) => (
-              <Input
-                {...input}
-                className="inputField"
-                label="Last Name"
-                margin="normal"
-              />
-            )}
+            className="inputField"
+            label="Last Name"
+            margin="normal"
+            component={inputField}
           />
         </div>
         <div className="row">
           <Field
             name="email"
-            component={({ input }) => (
-              <Input
-                {...input}
-                className="inputField"
-                label="Email"
-                margin="normal"
-              />
-            )}
+            className="inputField"
+            label="Email"
+            margin="normal"
+            component={inputField}
           />
           <Field
             name="phone"
-            component={({ input }) => (
-              <Input
-                {...input}
-                className="inputField"
-                label="Phone"
-                margin="normal"
-              />
-            )}
+            className="inputField"
+            label="Phone"
+            margin="normal"
+            component={inputField}
           />
         </div>
         <div className="row">
           <Field
             name="companyName"
-            component={({ input }) => (
-              <Input
-                {...input}
-                className="inputField"
-                label="Company Name"
-                margin="normal"
-              />
-            )}
+            className="inputField"
+            label="Company Name"
+            margin="normal"
+            component={inputField}
           />
           <Field
             name="shippingAddress"
-            component={({ input }) => (
-              <Input
-                {...input}
-                className="inputField"
-                label="Shipping Address"
-                margin="normal"
-              />
-            )}
+            className="inputField"
+            label="Shipping Address"
+            margin="normal"
+            component={inputField}
           />
         </div>
         <div className="checkboxContainer">
