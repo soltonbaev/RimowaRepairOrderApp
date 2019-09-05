@@ -96,7 +96,7 @@ let ClientForm = props => {
                     value="checkedG"
                   />
                 }
-                label="Ship when complete (check the box if true)"
+                label="Ship when complete"
               />
             )}
           />

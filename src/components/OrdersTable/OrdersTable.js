@@ -65,12 +65,15 @@ export default class CustomizedTables extends React.Component {
             horizontal: "center"
           }}
         > 
-          <OrderPreview order={this.state.orderToPreview} />
-          <WrappedButton
+
+        <div className="dbPrintPreview">
+        <WrappedButton
             className="printButton"
             onClick={() => this.printOrderInfo(this.state.orderToPreview)}
             label="Print"
           />
+          <OrderPreview order={this.state.orderToPreview} /> 
+          </div>
         </Popover>
         <Table className="table">
           <TableHead className="head">

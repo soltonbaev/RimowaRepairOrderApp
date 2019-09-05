@@ -49,15 +49,17 @@ export default class ClientForm extends React.Component {
           <div className="rimowaTitle">Client to complete:</div>
         </div>
         <div className="rimowaMid">
-          <WrappedButton href={ROUTES.HOME} label="Home page" />
+      
           <Form />
         </div>
         <div className="rimowaBottom">
+        <div className="buttonWrapper">
+        <WrappedButton href={ROUTES.HOME} label="< Go back" />
           <WrappedButton
             onClick={this.handleSubmit}
             href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
-            label="Save and continue"
-          />
+            label="Save and continue >"
+          /></div>
         </div>
       </div>
     );

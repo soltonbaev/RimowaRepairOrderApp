@@ -114,10 +114,7 @@ export default class Signature extends React.Component {
           ) : (
             <div className="rimowaTitle">Sign your name below:</div>
           )}
-          <WrappedButton
-            href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
-            label="Edit order info"
-          />
+         
         </div>
         <div className="rimowaMid">
           {!this.state.submitStarted ? (
@@ -138,29 +135,36 @@ export default class Signature extends React.Component {
         <div className="rimowaBottom">
           {this.state.submitStarted ? (
             <div className="buttonWrapper">
-              <WrappedButton href={ROUTES.HOME} label="Main menu" />
-              <WrappedButton
+   
+              <WrappedButton href={ROUTES.HOME} label="< Main menu" />
+              <WrappedButton className="printTicket"
+                onClick={() => this.printOrderInfo(this.state.orderData)}
+                label="Print this ticket"
+              />
+              <WrappedButton className="viewTickets"
                 href={ROUTES.REPAIR_ORDERS.PATH}
                 label="View Tickets"
               />
               <WrappedButton
                 href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
-                label="New ticket"
+                label="New ticket >"
               />
-              <WrappedButton
-                onClick={() => this.printOrderInfo(this.state.orderData)}
-                label="Print this ticket"
-              />
+              
             </div>
           ) : (
             <div className="buttonWrapper">
+                          <WrappedButton
+            href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
+            label="< Go Back"
+          />
               <WrappedButton
                 onClick={() => this.signaturePad.clear()}
                 label="Clear signpad"
               />
-              <WrappedButton
+
+              <WrappedButton className="finalSubmitWrapper"
                 onClick={() => this.submitSignature()}
-                label="Complete by submitting signature"
+                label="SUBMIT THE TICKET"
               />
             </div>
           )}

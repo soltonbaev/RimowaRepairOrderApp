@@ -1,9 +1,18 @@
 .popoverContainer .MuiPopover-paper{
+  /* position:relative!important;
   /* position:unset!important; */
-  max-width: 70%!important;
-  margin:auto!important;
+  /* min-width: 70%!important; */
+  /* margin:auto!important; */
   /* overflow-y:unset!important; */
-  /* overflow-x:unset!important; */
+  /*overflow-x:unset!important;*/
+  position: absolute;
+    margin: auto;
+    top: 0!important;
+    right: 0;
+    bottom: 0;
+    left: 0!important;
+    width: 70%;
+    height: 70%;
 }
 
 .ticketSummary {

@@ -61,3 +61,39 @@
   text-align:center;
   padding: 10px;
 }
+
+
+.clientFormContainer .MuiButton-root {
+  margin: 3vh;
+}
+
+
+@media screen and (max-width: 480px){
+.clientFormContainer  .MuiButton-root {
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  min-width: 64px;
+}
+
+.clientFormContainer .MuiButton-root {
+  margin: 1vh;
+}
+
+.clientFormContainer .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  margin: 0px ;
+  padding: 0px;
+
+}
+
+.clientFormContainer .inputField {
+  flex: 1;
+  margin: 10px 0;
+  width:90%;
+  text-align: center;
+}
+
+}

@@ -71,5 +71,20 @@
 }
 
 .signPadContainer .MuiButton-outlined{
-  margin: 3vh;
+  margin: 1vh;
+}
+
+.finalSubmitWrapper .MuiButton-root  {
+  color:red;
+}
+
+.finalSubmitWrapper .MuiButton-outlined {
+  border: 1px solid red;
+}
+
+@media screen and (max-width: 480px){
+.printTicket, .viewTickets {
+  display: none;
+}
+
 }

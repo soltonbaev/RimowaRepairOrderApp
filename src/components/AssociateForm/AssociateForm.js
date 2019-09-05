@@ -107,10 +107,7 @@ export default class AssociateForm extends React.Component {
           <div className="rimowaTitle">Associate to complete:</div>
         </div>
         <div className="rimowaMid">
-          <WrappedButton
-            href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
-            label="Edit client info"
-          />
+         
           <div className="associateBodyContainer">
             <div className="row">
               <Input
@@ -150,11 +147,15 @@ export default class AssociateForm extends React.Component {
         </div>
         <div className="rimowaBottom">
           <div className="row addItemButton">
+          <WrappedButton
+            href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
+            label="< Go Back"
+          />
             <WrappedButton onClick={this.addItem} label="Add another item" />
             <WrappedButton
               onClick={this.submitForm}
               href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
-              label="Save and Continue"
+              label="Save and Continue >"
             />
           </div>
         </div>

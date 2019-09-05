@@ -70,9 +70,11 @@ padding: 2%;
   text-size: 10px;
 }
 
+
 .associateFormContainer .MuiButton-outlined{
   margin: 3vh;
 }
+
 
 @media screen and (max-width: 480px){
   .associateFormContainer .inputField {
@@ -90,5 +92,20 @@ padding: 2%;
     margin: 0px;
     padding: 0 10px 0 10px;
 }
+
+
+.associateFormContainer .MuiButton-root {
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    min-width: 64px;
+  }
+  
+  .associateFormContainer .MuiButton-root {
+    margin: 1vh;
+  }
+  
+  
+  
+
 }
 
