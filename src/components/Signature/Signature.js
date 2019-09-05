@@ -80,6 +80,7 @@ export default class Signature extends React.Component {
           sent: true
         });
         window.sessionStorage.clear();
+        localStorage["persist:root"] = "";
         return;
       }
     });
@@ -113,6 +114,10 @@ export default class Signature extends React.Component {
           ) : (
             <div className="rimowaTitle">Sign your name below:</div>
           )}
+          <WrappedButton
+            href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
+            label="Edit order info"
+          />
         </div>
         <div className="rimowaMid">
           {!this.state.submitStarted ? (
@@ -148,10 +153,16 @@ export default class Signature extends React.Component {
               />
             </div>
           ) : (
-            <WrappedButton
-              onClick={() => this.submitSignature()}
-              label="Complete by submitting signature"
-            />
+            <div className="buttonWrapper">
+              <WrappedButton
+                onClick={() => this.signaturePad.clear()}
+                label="Clear signpad"
+              />
+              <WrappedButton
+                onClick={() => this.submitSignature()}
+                label="Complete by submitting signature"
+              />
+            </div>
           )}
         </div>
       </div>

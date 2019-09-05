@@ -1,11 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import DatePicker from "../DatePicker";
 import Input from "../CustomInput";
 const createItemForm = itemNum => {
-  // const required = value => (value ? undefined : "Required");
   let ItemForm = props => {
     const { handleSubmit } = props;
     return (
@@ -14,7 +14,6 @@ const createItemForm = itemNum => {
           <div className="row">
             <Field
               name="needsBy"
-              // validate={[required]}
               component={({ input }) => {
                 return (
                   <DatePicker
@@ -29,7 +28,6 @@ const createItemForm = itemNum => {
           <div className="row">
             <Field
               name="serialNumber"
-              // validate={[required]}
               component={({ input }) => (
                 <Input
                   {...input}
@@ -41,7 +39,6 @@ const createItemForm = itemNum => {
             />
             <Field
               name="lockCombo"
-              // validate={[required]}
               component={({ input }) => (
                 <Input
                   {...input}
@@ -55,7 +52,6 @@ const createItemForm = itemNum => {
           <div className="row">
             <Field
               name="model"
-              // validate={[required]}
               component={({ input }) => (
                 <Input
                   {...input}
@@ -67,7 +63,6 @@ const createItemForm = itemNum => {
             />
             <Field
               name="reasonForRepair"
-              // validate={[required]}
               component={({ input }) => (
                 <Input
                   {...input}
@@ -81,12 +76,17 @@ const createItemForm = itemNum => {
           <div className="checkboxContainer">
             <Field
               name="warranty"
-              // validate={[required]}
               defaultValue={false}
               component={({ input }) => (
                 <FormControlLabel
                   {...input}
-                  control={<Checkbox color="default" value="checkedG" />}
+                  control={
+                    <Checkbox
+                      checked={input.value}
+                      color="default"
+                      value="checkedG"
+                    />
+                  }
                   label="check the box if under warranty"
                 />
               )}
@@ -99,8 +99,12 @@ const createItemForm = itemNum => {
 
   ItemForm = reduxForm({
     destroyOnUnmount: false,
-    form: `item-${itemNum}` || "item"
+    form: `item-${itemNum}`
   })(ItemForm);
+
+  ItemForm = connect(state => ({
+    initialValues: state.form[`item-${itemNum}`] && state.form[`item-${itemNum}`].values
+  }))(ItemForm);
 
   return ItemForm;
 };

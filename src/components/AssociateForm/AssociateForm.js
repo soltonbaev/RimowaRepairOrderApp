@@ -28,8 +28,27 @@ export default class AssociateForm extends React.Component {
     associateName: ""
   };
 
+  addItem = () => {
+    const { items } = this.state;
+    const Form = createItemForm(items.length + 1);
+    this.setState(() => ({ items: [...items, <Form />] }));
+  };
+
   componentDidMount() {
-    this.addItem();
+    const state = this.props.state;
+    const itemsStored = Object.keys(state.form).filter(
+      key => key.indexOf("item") !== -1
+    ).length;
+    if (itemsStored) {
+      const items = [];
+      for (let i = 0; i < itemsStored; i++) {
+        const Form = createItemForm(i + 1);
+        items.push(<Form />);
+      }
+      this.setState({ items });
+    } else {
+      this.addItem();
+    }
   }
 
   getItemData = selector => {
@@ -54,7 +73,6 @@ export default class AssociateForm extends React.Component {
       itemsData.push(this.getItemData(selector));
     });
     itemsData = itemsData.map(item => {
-      console.log(item);
       return {
         ...item,
         warranty:
@@ -62,14 +80,8 @@ export default class AssociateForm extends React.Component {
       };
     });
     window.sessionStorage.itemsList = JSON.stringify(itemsData);
-    window.sessionStorage.associateName = associateName;
+    // window.sessionStorage.associateName = associateName;
     this.setState({ submitted: true });
-  };
-
-  addItem = () => {
-    const { items } = this.state;
-    const Form = createItemForm(items.length + 1);
-    this.setState({ items: [...items, <Form />] });
   };
 
   tabChange = (e, tab) => {
@@ -77,6 +89,7 @@ export default class AssociateForm extends React.Component {
   };
 
   associateNameChange = e => {
+    window.sessionStorage.associateName = e.target.value;
     this.setState({ associateName: e.target.value });
   };
 
@@ -88,60 +101,62 @@ export default class AssociateForm extends React.Component {
     const { items, tab, submitted } = this.state;
     return (
       <div className="formContainer associateFormContainer">
-         <div className="rimowaTop">
-        <div className="rimowaLogoText">RIMOWA</div>
-        <div className="rimowaSubtitle">Client Care</div>
-        <div className="rimowaTitle">Associate to complete:</div>
+        <div className="rimowaTop">
+          <div className="rimowaLogoText">RIMOWA</div>
+          <div className="rimowaSubtitle">Client Care</div>
+          <div className="rimowaTitle">Associate to complete:</div>
         </div>
         <div className="rimowaMid">
-        <div className="associateBodyContainer">
-        <div className="row">
-   
-          <Input
-            className="inputField"
-            onChange={this.associateNameChange}
-            label="Associate Name"
-            margin="normal"
+          <WrappedButton
+            href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
+            label="Edit client info"
           />
-        </div>
-        <div className="paperContainer">
-          <Paper square>
-            <Tabs
-              value={tab}
-              indicatorColor="primary"
-              textColor="primary"
-              onChange={this.tabChange}
-            >
-              {items &&
-                items.map((item, index) => {
-                  return (
-                    <Tab
-                      key={index}
-                      label={`Item ${index + 1}`}
-                      id={`Item-${index + 1}`}
-                      value={index}
-                    />
-                  );
-                })}
-            </Tabs>
-            {/* <div className="row"> */}
-            {items[tab]}
-            {/* </div> */}
-          </Paper>
-        </div>
-        </div>
+          <div className="associateBodyContainer">
+            <div className="row">
+              <Input
+                value={window.sessionStorage.associateName}
+                className="inputField"
+                onChange={this.associateNameChange}
+                label="Associate Name"
+                margin="normal"
+              />
+            </div>
+            <div className="paperContainer">
+              <Paper square>
+                <Tabs
+                  value={tab}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  onChange={this.tabChange}
+                >
+                  {items &&
+                    items.map((item, index) => {
+                      return (
+                        <Tab
+                          key={index}
+                          label={`Item ${index + 1}`}
+                          id={`Item-${index + 1}`}
+                          value={index}
+                        />
+                      );
+                    })}
+                </Tabs>
+                {/* <div className="row"> */}
+                {items[tab]}
+                {/* </div> */}
+              </Paper>
+            </div>
+          </div>
         </div>
         <div className="rimowaBottom">
-        <div className="row addItemButton">
-          <WrappedButton onClick={this.addItem} label="Add another item" />
-          <WrappedButton
-            onClick={this.submitForm}
-            href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
-            label="Save and Continue"
-          />
-        </div>
-  
-         
+          <div className="row addItemButton">
+            <WrappedButton onClick={this.addItem} label="Add another item" />
+            <WrappedButton
+              onClick={this.submitForm}
+              href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
+              label="Save and Continue"
+            />
+          </div>
         </div>
       </div>
     );
