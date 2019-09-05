@@ -48,3 +48,88 @@
   margin-top: -20px !important;
   justify-content: center;
 }
+
+@media screen and (max-width: 1024px){
+
+ .tableContainer .MuiTableCell-root {
+    padding: 0px;
+  }
+  
+  .tableContainer td {
+    padding: 0px;
+  }
+  }
+
+  @media screen and (max-width: 480px){
+
+    .tableContainer .MuiTableCell-root {
+      padding: 0px;
+    }
+    
+    .tableContainer td {
+      padding: 0px;
+    }
+  
+
+  .tableContainer table tr td:first-child + td + td {
+    display: none;
+  }
+
+  .tableContainer table tr th:first-child + th + th {
+    display: none;
+  }
+
+  .tableContainer table tr td:first-child + td + td + td {
+    display: none;
+  }
+
+  .tableContainer table tr th:first-child + th + th + th {
+    display: none;
+  }
+
+  .tableContainer table tr td:first-child + td + td + td + td{
+    display: none;
+  }
+
+  .tableContainer table tr th:first-child + th + th + th + th{
+    display: none;
+  }
+
+
+  .tableContainer table tr td:first-child + td + td + td + td + td {
+    display: none;
+  }
+
+  .tableContainer table tr th:first-child + th + th + th + th + th {
+    display: none;
+  }
+
+  .tableContainer table tr td:first-child + td + td + td + td + td + td {
+    display: none;
+  }
+
+  .tableContainer table tr th:first-child + th + th + th + th + th + th {
+    display: none;
+  }
+
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 769px) {
+
+  .tableContainer table tr td:first-child + td + td + td {
+    display: none;
+  }
+
+  .tableContainer table tr th:first-child + th + th + th {
+    display: none;
+  }
+
+  .tableContainer table tr td:first-child + td + td + td + td{
+    display: none;
+  }
+
+  .tableContainer table tr th:first-child + th + th + th + th{
+    display: none;
+  }
+}

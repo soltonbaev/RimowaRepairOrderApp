@@ -64,7 +64,7 @@ export default class CustomizedTables extends React.Component {
             vertical: "top",
             horizontal: "center"
           }}
-        >
+        > 
           <OrderPreview order={this.state.orderToPreview} />
           <WrappedButton
             className="printButton"
