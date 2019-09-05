@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -88,7 +89,13 @@ let ClientForm = props => {
             component={({ input }) => (
               <FormControlLabel
                 {...input}
-                control={<Checkbox color="default" value="checkedG" />}
+                control={
+                  <Checkbox
+                    checked={input.value}
+                    color="default"
+                    value="checkedG"
+                  />
+                }
                 label="Ship when complete (check the box if true)"
               />
             )}
@@ -103,5 +110,9 @@ ClientForm = reduxForm({
   destroyOnUnmount: false,
   form: "client"
 })(ClientForm);
+
+ClientForm = connect(state => ({
+  initialValues: state.form.client && state.form.client.values
+}))(ClientForm);
 
 export default ClientForm;

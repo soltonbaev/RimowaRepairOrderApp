@@ -37,29 +37,29 @@ export default class ClientForm extends React.Component {
     };
     window.sessionStorage.clientInfo = JSON.stringify(clientInfo);
     window.sessionStorage.orderUID = uuid();
-    console.log("clientInfo", clientInfo);
     this.setState({ saved: true });
   };
 
   render() {
     return (
       <div className="formContainer clientFormContainer">
-        
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>
           <div className="rimowaTitle">Client to complete:</div>
         </div>
         <div className="rimowaMid">
-          
+          <WrappedButton href={ROUTES.HOME} label="Home page" />
           <Form />
         </div>
-        <div className="rimowaBottom"><WrappedButton
-        onClick={this.handleSubmit}
-        href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
-        label="Save and continue"
-        /></div>
-      </div >
+        <div className="rimowaBottom">
+          <WrappedButton
+            onClick={this.handleSubmit}
+            href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
+            label="Save and continue"
+          />
+        </div>
+      </div>
     );
   }
 }
