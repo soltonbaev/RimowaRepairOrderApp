@@ -35,7 +35,7 @@ export default class RepairOrders extends React.Component {
       <div className="tableContainer">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
-        <div className="tableContainer">
+        <div className="tableWrapper">
           <div className="labelButtonContainer">
             <div className="homeButton">
               <WrappedButton href={ROUTES.HOME} label="Main menu" />
