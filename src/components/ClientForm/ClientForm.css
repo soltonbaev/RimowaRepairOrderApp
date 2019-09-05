@@ -20,6 +20,9 @@
   justify-content: center;
   flex-direction: column; */
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 

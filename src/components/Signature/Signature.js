@@ -98,7 +98,7 @@ export default class Signature extends React.Component {
     return this.state.emptyOrder ? (
       <Redirect to={ROUTES.HOME} />
     ) : (
-      <div className="signPadContainer">
+      <div className="signPadContainer bodyContainer">
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>

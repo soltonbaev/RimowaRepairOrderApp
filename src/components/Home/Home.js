@@ -6,7 +6,7 @@ import WrappedButton from "../WrappedButton";
 export default class Home extends React.Component {
   render() {
     return (
-      <div className="homeContainer">
+      <div className="homeContainer bodyContainer">
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>

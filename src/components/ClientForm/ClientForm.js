@@ -42,7 +42,7 @@ export default class ClientForm extends React.Component {
 
   render() {
     return (
-      <div className="formContainer clientFormContainer">
+      <div className="formContainer bodyContainer clientFormContainer">
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>

@@ -32,7 +32,7 @@ export default class RepairOrders extends React.Component {
   render() {
     const { orders, dispatch } = this.props;
     return (
-      <div className="tableContainer">
+      <div className="tableContainer bodyContainer">
         <div className="rimowaLogoText">RIMOWA</div>
         <div className="rimowaSubtitle">Client Care</div>
         <div className="tableWrapper">
