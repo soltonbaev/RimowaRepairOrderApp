@@ -100,7 +100,7 @@ export default class AssociateForm extends React.Component {
   render() {
     const { items, tab, submitted } = this.state;
     return (
-      <div className="formContainer associateFormContainer">
+      <div className="formContainer bodyContainer associateFormContainer">
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>

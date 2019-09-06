@@ -112,7 +112,7 @@ export default class Signature extends React.Component {
               {this.state.message}
             </div>
           ) : (
-            <div className="rimowaTitle">Sign your name below:</div>
+            <div className="rimowaTitle">sign your name in the box below:</div>
           )}
          
         </div>
