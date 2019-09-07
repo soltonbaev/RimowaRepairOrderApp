@@ -12,7 +12,13 @@ export default class Home extends React.Component {
           <div className="rimowaSubtitle">Client Care</div>
         </div>
         <div className="rimowaMid">
-          <div className="rimowaTitle">Welcome <br /><br />to Rimowa's repair ticket <br /><br />management web app</div>
+          <div className="rimowaTitle">
+            Welcome <br />
+            <br />
+            to Rimowa's repair ticket <br />
+            <br />
+            management web app
+          </div>
           <div className="buttonWrapper">
             <WrappedButton
               variant="outlined"
@@ -28,9 +34,7 @@ export default class Home extends React.Component {
             />
           </div>
         </div>
-        <div className="rimowaBottom">
-
-        </div>
+        <div className="rimowaBottom"></div>
       </div>
     );
   }

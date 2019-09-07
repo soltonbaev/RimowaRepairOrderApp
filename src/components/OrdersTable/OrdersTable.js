@@ -8,13 +8,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import moment from "moment";
 
 import OrderPreview from "../OrderPreviewTemplate";
 
 import "./OrdersTable.css";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../../constants/routes";
 import { Popover } from "@material-ui/core";
 import WrappedButton from "../WrappedButton";
 import { getHTMLDBTemplate } from "../../templates/handlebar-template/handlebarPrintHMTL";
@@ -50,7 +49,7 @@ export default class CustomizedTables extends React.Component {
 
   render() {
     const { orders } = this.props;
-    return (
+    return orders.length ? (
       <Paper className="root">
         <Popover
           className="popoverContainer"
@@ -64,15 +63,14 @@ export default class CustomizedTables extends React.Component {
             vertical: "top",
             horizontal: "center"
           }}
-        > 
-
-        <div className="dbPrintPreview">
-        <WrappedButton
-            className="printButton"
-            onClick={() => this.printOrderInfo(this.state.orderToPreview)}
-            label="Print"
-          />
-          <OrderPreview order={this.state.orderToPreview} /> 
+        >
+          <div className="dbPrintPreview">
+            <WrappedButton
+              className="printButton"
+              onClick={() => this.printOrderInfo(this.state.orderToPreview)}
+              label="Print"
+            />
+            <OrderPreview order={this.state.orderToPreview} />
           </div>
         </Popover>
         <Table className="table">
@@ -131,6 +129,18 @@ export default class CustomizedTables extends React.Component {
           </TableBody>
         </Table>
       </Paper>
+    ) : (
+      <div
+        style={{
+          width: "100vw",
+          height: "80vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <CircularProgress />
+      </div>
     );
   }
 }
