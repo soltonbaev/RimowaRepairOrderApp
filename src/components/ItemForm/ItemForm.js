@@ -5,10 +5,36 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import DatePicker from "../DatePicker";
 import Input from "../CustomInput";
+import { validator } from "../../utils";
+const { required, maxLength, minLength } = validator;
+
+const maxLength12 = maxLength(12);
+const minLength8 = minLength(8);
 
 function inputField(props) {
   const { input, ...rest } = props;
   return <Input {...input} {...rest} />;
+}
+
+function datePicker({ input, ...rest }) {
+  const { meta = {} } = rest;
+  const { error, warning } = meta;
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <DatePicker
+        {...input}
+        {...meta}
+        value={input.value ? input.value : null}
+        label="Needs by"
+      />
+      {error || warning ? (
+        (error && <span style={{ color: "red" }}>{error}</span>) ||
+        (warning && <span style={{ color: "red" }}>{warning}</span>)
+      ) : (
+        <span style={{ height: "19px" }} />
+      )}
+    </div>
+  );
 }
 
 const createItemForm = itemNum => {
@@ -20,15 +46,8 @@ const createItemForm = itemNum => {
           <div className="row">
             <Field
               name="needsBy"
-              component={({ input }) => {
-                return (
-                  <DatePicker
-                    {...input}
-                    value={input.value ? input.value : null}
-                    label="Needs by"
-                  />
-                );
-              }}
+              component={datePicker}
+              validate={[required]}
             />
           </div>
           <div className="row">
@@ -38,6 +57,7 @@ const createItemForm = itemNum => {
               label="Serial Number #"
               margin="normal"
               component={inputField}
+              validate={[required, maxLength12, minLength8]}
             />
             <Field
               name="lockCombo"
@@ -45,6 +65,7 @@ const createItemForm = itemNum => {
               label="Lock Combo"
               margin="normal"
               component={inputField}
+              validate={[required]}
             />
           </div>
           <div className="row">
@@ -72,7 +93,7 @@ const createItemForm = itemNum => {
                   {...input}
                   control={
                     <Checkbox
-                      checked={input.value}
+                      checked={Boolean(input.value)}
                       color="default"
                       value="checkedG"
                     />

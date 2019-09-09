@@ -25,7 +25,8 @@ export default class AssociateForm extends React.Component {
     items: [],
     tab: 0,
     submitted: false,
-    associateName: ""
+    associateName: "",
+    associateNameVisited: false
   };
 
   addItem = () => {
@@ -35,10 +36,7 @@ export default class AssociateForm extends React.Component {
   };
 
   componentDidMount() {
-    const state = this.props.state;
-    const itemsStored = Object.keys(state.form).filter(
-      key => key.indexOf("item") !== -1
-    ).length;
+    const { itemsStored } = this.props;
     if (itemsStored) {
       const items = [];
       for (let i = 0; i < itemsStored; i++) {
@@ -55,8 +53,6 @@ export default class AssociateForm extends React.Component {
     const item = {};
 
     ITEM_FORM_FIELDS.forEach(field => {
-      console.log(this.props.state.form);
-      console.log("field", field);
       item[field] = selector(this.props.state, field);
     });
     item.uid = uuid();
@@ -65,7 +61,7 @@ export default class AssociateForm extends React.Component {
   };
 
   submitForm = () => {
-    const { items, associateName } = this.state;
+    const { items } = this.state;
     let itemsData = [];
     if (!items.length) return itemsData;
     items.forEach((item, index) => {
@@ -80,8 +76,6 @@ export default class AssociateForm extends React.Component {
       };
     });
     window.sessionStorage.itemsList = JSON.stringify(itemsData);
-    // window.sessionStorage.associateName = associateName;
-    this.setState({ submitted: true });
   };
 
   tabChange = (e, tab) => {
@@ -93,12 +87,15 @@ export default class AssociateForm extends React.Component {
     this.setState({ associateName: e.target.value });
   };
 
+  onAssociateNameBlur = e => this.setState({ associateNameVisited: true });
+
   handleDateChange = date => {
     this.setState({ date });
   };
 
   render() {
-    const { items, tab, submitted } = this.state;
+    const { items, tab, associateName, associateNameVisited } = this.state;
+    const { itemFormsValid } = this.props;
     return (
       <div className="formContainer bodyContainer associateFormContainer">
         <div className="rimowaTop">
@@ -107,15 +104,21 @@ export default class AssociateForm extends React.Component {
           <div className="rimowaTitle">Associate to complete:</div>
         </div>
         <div className="rimowaMid">
-         
           <div className="associateBodyContainer">
             <div className="row">
               <Input
                 value={window.sessionStorage.associateName}
                 className="inputField"
                 onChange={this.associateNameChange}
-                label="Associate Name"
+                label={
+                  !this.state.associateName && associateNameVisited
+                    ? "Required field"
+                    : "Associate Name"
+                }
                 margin="normal"
+                required
+                onBlur={this.onAssociateNameBlur}
+                error={!this.state.associateName && associateNameVisited}
               />
             </div>
             <div className="paperContainer">
@@ -138,21 +141,20 @@ export default class AssociateForm extends React.Component {
                       );
                     })}
                 </Tabs>
-                {/* <div className="row"> */}
                 {items[tab]}
-                {/* </div> */}
               </Paper>
             </div>
           </div>
         </div>
         <div className="rimowaBottom">
           <div className="row addItemButton">
-          <WrappedButton
-            href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
-            label="< Go Back"
-          />
+            <WrappedButton
+              href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
+              label="< Go Back"
+            />
             <WrappedButton onClick={this.addItem} label="Add another item" />
             <WrappedButton
+              disabled={!itemFormsValid || !associateName.length}
               onClick={this.submitForm}
               href={ROUTES.NEW_REPAIR_ORDER.NESTED.SIGN}
               label="Save and Continue >"

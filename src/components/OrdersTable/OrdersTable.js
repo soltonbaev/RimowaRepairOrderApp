@@ -32,12 +32,16 @@ const TABLE_COLUMNS = [
 ];
 
 export default class CustomizedTables extends React.Component {
-  state = {
-    anchorEl: null,
-    orderToPreview: null,
-    deleteConfirmAnchor: null,
-    deletingUID: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null,
+      orderToPreview: null,
+      deleteConfirmAnchor: null,
+      deletingUID: null
+    };
+    this.rootRef = null;
+  }
 
   showDeleteConfirm = (currentTarget, uid) =>
     this.setState({ deleteConfirmAnchor: currentTarget, deletingUID: uid });
@@ -59,15 +63,16 @@ export default class CustomizedTables extends React.Component {
   render() {
     const { orders, dispatch, ordersLoading } = this.props;
     return !ordersLoading && orders.length ? (
-      <Paper className="root">
+      <Paper className="root" ref={ref => (this.rootRef = ref)}>
         <Popover
           className="confirmDelete"
           open={Boolean(this.state.deleteConfirmAnchor)}
           onClose={this.closeDeleteConfirm}
           anchorOrigin={{
-            vertical: "bottom",
+            vertical: "center",
             horizontal: "center"
           }}
+          anchorEl={this.rootRef}
           transformOrigin={{
             vertical: "top",
             horizontal: "center"
@@ -92,9 +97,10 @@ export default class CustomizedTables extends React.Component {
           open={Boolean(this.state.anchorEl)}
           onClose={this.handleClose}
           anchorOrigin={{
-            vertical: "bottom",
+            vertical: "center",
             horizontal: "center"
           }}
+          anchorEl={this.rootRef}
           transformOrigin={{
             vertical: "top",
             horizontal: "center"

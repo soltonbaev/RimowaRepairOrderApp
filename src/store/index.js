@@ -7,7 +7,7 @@ import reducer from "./reducer";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["repairOrders", "customers"]
+  blacklist: ["repairOrders", "customers", "ordersLoading"]
 };
 const persistedReducer = persistReducer(persistConfig, reducer);
 export default createStore(
