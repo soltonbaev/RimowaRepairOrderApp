@@ -3,7 +3,6 @@ import "./RepairOrders.css";
 import OrdersTable from "../OrdersTable";
 import { getOrders } from "../../store/reducer";
 import WrappedButton from "../WrappedButton";
-import api from "../../api";
 import { API_URL } from "../../config";
 import { ROUTES } from "../../constants/routes";
 
@@ -30,7 +29,7 @@ export default class RepairOrders extends React.Component {
   }
 
   render() {
-    const { orders, dispatch } = this.props;
+    const { orders, dispatch, ordersLoading } = this.props;
     return (
       <div className="tableContainer">
         <div className="rimowaLogoText">RIMOWA</div>
@@ -50,7 +49,11 @@ export default class RepairOrders extends React.Component {
               />
             </div>
           </div>
-          <OrdersTable className="table" orders={orders} />
+          <OrdersTable
+            className="table"
+            orders={orders}
+            ordersLoading={ordersLoading}
+          />
         </div>
       </div>
     );

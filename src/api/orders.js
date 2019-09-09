@@ -10,4 +10,7 @@ export default class Orders extends Base {
   exportNew() {
     return this.apiClient.get("exportNew");
   }
+  delete(uid) {
+    return this.apiClient.delete(`deleteOrder/${uid}`);
+  }
 }

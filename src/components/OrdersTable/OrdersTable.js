@@ -14,6 +14,8 @@ import moment from "moment";
 import OrderPreview from "../OrderPreviewTemplate";
 
 import "./OrdersTable.css";
+import { deleteOrders } from "../../store/reducer";
+import ConfirmDialog from "../ConfirmDialog";
 import { Popover } from "@material-ui/core";
 import WrappedButton from "../WrappedButton";
 import { getHTMLDBTemplate } from "../../templates/handlebar-template/handlebarPrintHMTL";
@@ -32,8 +34,15 @@ const TABLE_COLUMNS = [
 export default class CustomizedTables extends React.Component {
   state = {
     anchorEl: null,
-    orderToPreview: null
+    orderToPreview: null,
+    deleteConfirmAnchor: null,
+    deletingUID: null
   };
+
+  showDeleteConfirm = (currentTarget, uid) =>
+    this.setState({ deleteConfirmAnchor: currentTarget, deletingUID: uid });
+  closeDeleteConfirm = () =>
+    this.setState({ deleteConfirmAnchor: null, deletingUID: null });
 
   showPreview = (anchorEl, order) =>
     this.setState({ anchorEl, orderToPreview: order });
@@ -48,9 +57,36 @@ export default class CustomizedTables extends React.Component {
   }
 
   render() {
-    const { orders } = this.props;
-    return orders.length ? (
+    const { orders, dispatch, ordersLoading } = this.props;
+    return !ordersLoading && orders.length ? (
       <Paper className="root">
+        <Popover
+          className="confirmDelete"
+          open={Boolean(this.state.deleteConfirmAnchor)}
+          onClose={this.closeDeleteConfirm}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center"
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center"
+          }}
+        >
+          <ConfirmDialog
+            title="Authorized action"
+            onConfirm={e => {
+              e.stopPropagation();
+              this.closeDeleteConfirm();
+              dispatch(deleteOrders(this.state.deletingUID));
+            }}
+            message="Deleting order requires confirmation!"
+            onCancel={this.closeDeleteConfirm}
+            confirmText="Confirm"
+            cancelText="Cancel"
+            confirmWithInput={true}
+          />
+        </Popover>
         <Popover
           className="popoverContainer"
           open={Boolean(this.state.anchorEl)}
@@ -121,7 +157,13 @@ export default class CustomizedTables extends React.Component {
                   </div>
                 </TableCell>
                 <TableCell align="center">
-                  <DeleteIcon className="actionIcon delete" />
+                  <DeleteIcon
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.showDeleteConfirm(e.currentTarget, order.uid);
+                    }}
+                    className="actionIcon delete"
+                  />
                   <EditIcon className="actionIcon edit" />
                 </TableCell>
               </TableRow>
@@ -129,6 +171,18 @@ export default class CustomizedTables extends React.Component {
           </TableBody>
         </Table>
       </Paper>
+    ) : !orders.length && !ordersLoading ? (
+      <div
+        style={{
+          width: "100vw",
+          height: "80vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <h2>Orders table empty.</h2>
+      </div>
     ) : (
       <div
         style={{
