@@ -33,22 +33,27 @@ const createItemForm = itemNum => {
                 }}
               />
             </div>
-            <div className="inputField">
-              <Field
-                name="walkinOrShipped"
-                defaultValue={true}
-                component={({ input }) => (
+
+            <Field
+              name="walkinOrShipped"
+              margin="normal"
+              defaultValue={true}
+              component={({ input }) => (
+                <div className="inputField">
+                  <div className="dropdownWrapper">
                   <Select
                     native
+                    
                   >
                     <option value="Select an option">Origin (select an option)</option>
                     <option value="walkIn">Walk in</option>
                     <option value="shippedToStore">Shipped to store</option>
                   </Select>
+                  </div>
+                </div>
+              )}
+            />
 
-                )}
-              />
-            </div>
           </div>
           <div className="row">
             <Field

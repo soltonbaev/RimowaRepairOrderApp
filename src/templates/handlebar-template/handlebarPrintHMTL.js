@@ -81,6 +81,10 @@ export const templateString = `
         <td style="padding: 2px 20px 2px 20px;">{{dateConvert needsBy}}</td>
       </tr>
       <tr>
+      <td style="padding: 2px 20px 2px 20px;">Origin</td>
+      <td style="padding: 2px 20px 2px 20px;">{{walkinOrShipped}}</td>
+    </tr>
+      <tr>
         <td style="padding: 2px 20px 2px 20px;">Serial Number: </td>
         <td style="padding: 2px 20px 2px 20px;">{{serialNumber}}</td>
       </tr>
@@ -100,6 +104,16 @@ export const templateString = `
         <td style="padding: 2px 20px 2px 20px;">  Warranty:  </td>
         <td style="padding: 2px 20px 2px 20px;"> {{warranty}} </td>
       </tr>
+      <tr>
+      <td style="padding: 2px 20px 2px 20px;"> Replacement Case Issued:  </td>
+      <td style="padding: 2px 20px 2px 20px;"> {{replacementCaseIssued}} </td>
+    </tr>
+    <tr>
+    <td style="padding: 2px 20px 2px 20px;"> Damaged by Third Party (Airline): </td>
+    <td style="padding: 2px 20px 2px 20px;"> {{damagedBy3rdParty}} </td>
+  </tr>
+
+   
       </table>
       </div>
   </div>
