@@ -112,7 +112,7 @@ export default class AssociateForm extends React.Component {
                 onChange={this.associateNameChange}
                 label={
                   !this.state.associateName && associateNameVisited
-                    ? "Required field"
+                    ? "required"
                     : "Associate Name"
                 }
                 margin="normal"
