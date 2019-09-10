@@ -4,6 +4,8 @@ import { Field, reduxForm } from "redux-form";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Input from "../CustomInput";
+import { validator } from "../../utils";
+const { required, email: emailValidator } = validator;
 
 function inputField(props) {
   const { input, ...rest } = props;
@@ -22,6 +24,7 @@ let ClientForm = props => {
             label="First Name"
             margin="normal"
             component={inputField}
+            validate={[required]}
           />
           <Field
             name="lastName"
@@ -29,6 +32,7 @@ let ClientForm = props => {
             label="Last Name"
             margin="normal"
             component={inputField}
+            validate={[required]}
           />
         </div>
         <div className="row">
@@ -38,6 +42,7 @@ let ClientForm = props => {
             label="Email"
             margin="normal"
             component={inputField}
+            validate={[required, emailValidator]}
           />
           <Field
             name="phone"
@@ -45,6 +50,7 @@ let ClientForm = props => {
             label="Phone"
             margin="normal"
             component={inputField}
+            validate={[required]}
           />
         </div>
         <div className="row">
@@ -72,7 +78,7 @@ let ClientForm = props => {
                 {...input}
                 control={
                   <Checkbox
-                    checked={input.value}
+                    checked={Boolean(input.value)}
                     color="default"
                     value="checkedG"
                   />

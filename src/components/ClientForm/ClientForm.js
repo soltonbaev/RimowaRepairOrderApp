@@ -41,6 +41,7 @@ export default class ClientForm extends React.Component {
   };
 
   render() {
+    const { formError } = this.props;
     return (
       <div className="formContainer bodyContainer clientFormContainer">
         <div className="rimowaTop">
@@ -49,17 +50,18 @@ export default class ClientForm extends React.Component {
           <div className="rimowaTitle">Client to complete:</div>
         </div>
         <div className="rimowaMid">
-      
           <Form />
         </div>
         <div className="rimowaBottom">
-        <div className="buttonWrapper">
-        <WrappedButton href={ROUTES.HOME} label="< Go back" />
-          <WrappedButton
-            onClick={this.handleSubmit}
-            href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
-            label="Save and continue >"
-          /></div>
+          <div className="buttonWrapper">
+            <WrappedButton href={ROUTES.HOME} label="< Go back" />
+            <WrappedButton
+              disabled={Boolean(formError)}
+              onClick={this.handleSubmit}
+              href={ROUTES.NEW_REPAIR_ORDER.NESTED.ASSOCIATE}
+              label="Save and continue >"
+            />
+          </div>
         </div>
       </div>
     );
