@@ -28,10 +28,10 @@ function datePicker({ input, ...rest }) {
         label="Needs by"
       />
       {error || warning ? (
-        (error && <span style={{ color: "red" }}>{error}</span>) ||
-        (warning && <span style={{ color: "red" }}>{warning}</span>)
+        (error && <span style={{ color: "red", fontSize: "12px" }}>{error}</span>) ||
+        (warning && <span style={{ color: "red", fontSize: "12px" }}>{warning}</span>)
       ) : (
-        <span style={{ height: "19px" }} />
+        <span style={{ height: "15px" }} />
       )}
     </div>
   );
