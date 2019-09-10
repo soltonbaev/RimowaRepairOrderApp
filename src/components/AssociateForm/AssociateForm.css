@@ -14,7 +14,14 @@
   color: #00000091;
 } */
 
+.dropdownSpacer {
+  height: 17px;
+}
 
+.associateBodyContainer .MuiFormControl-marginNormal{
+width: 80%;
+margin-top: 0px;
+}
 
 .associateBodyContainer {
   /* margin:auto; */
@@ -50,6 +57,10 @@
   /* max-width: 300px */
 }
 
+.checkboxWrapper {
+  font-size: 12px;
+  padding: 16px;
+}
 .checkbox {
   margin: 10px;
 }
@@ -63,6 +74,7 @@
 
 .paperContainer{
 padding: 2%;
+display:flex;
 
 }
 
@@ -84,6 +96,7 @@ padding: 2%;
     /* max-width: 300px */
   }
 
+ 
   .associateFormContainer .row {
     display: flex;
     flex-direction: row;

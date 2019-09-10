@@ -25,6 +25,7 @@ const createItemForm = itemNum => {
                 component={({ input }) => {
                   return (
                     <DatePicker
+
                       {...input}
                       value={input.value ? input.value : null}
                       label="Needs by"
@@ -40,15 +41,17 @@ const createItemForm = itemNum => {
               defaultValue={true}
               component={({ input }) => (
                 <div className="inputField">
+                  <div className="dropdownSpacer">
+                  </div>
                   <div className="dropdownWrapper">
-                  <Select
-                    native
-                    
-                  >
-                    <option value="Select an option">Origin (select an option)</option>
-                    <option value="walkIn">Walk in</option>
-                    <option value="shippedToStore">Shipped to store</option>
-                  </Select>
+                    <Select
+                      native
+                      className="inputField"
+                    >
+                      <option value="Select an option">Origin (select an option)</option>
+                      <option value="walkIn">Walk in</option>
+                      <option value="shippedToStore">Shipped to store</option>
+                    </Select>
                   </div>
                 </div>
               )}
@@ -89,10 +92,8 @@ const createItemForm = itemNum => {
           </div>
           <div className="row">
 
+            <div className="checkboxWrapper">
 
-
-
-            <div className="checkboxContainer">
               <Field
                 name="warranty"
                 defaultValue={false}
@@ -106,51 +107,55 @@ const createItemForm = itemNum => {
                         value="checkedG"
                       />
                     }
-                    label="check the box if under warranty"
+                    label="under warranty"
                   />
                 )}
               />
+            
 
-              <Field
-                name="replacementCaseIssued"
-                defaultValue={false}
-                component={({ input }) => (
-                  <FormControlLabel
-                    {...input}
-                    control={
-                      <Checkbox
-                        checked={input.value}
-                        color="default"
-                        value="checkedG"
-                      />
-                    }
-                    label="replacement case issued"
-                  />
-                )}
-              />
-
-              <Field
-                name="damagedBy3rdParty"
-                defaultValue={false}
-                component={({ input }) => (
-                  <FormControlLabel
-                    {...input}
-                    control={
-                      <Checkbox
-                        checked={input.value}
-                        color="default"
-                        value="checkedG"
-                      />
-                    }
-                    label="damaged by 3rd party (airline)"
-                  />
-                )}
-              />
+            <Field
+              name="replacementCaseIssued"
+              defaultValue={false}
+              component={({ input }) => (
+                <FormControlLabel
+                  {...input}
+                  control={
+                    <Checkbox
+                      checked={input.value}
+                      color="default"
+                      value="checkedG"
+                    />
+                  }
+                  label="replacement case issued"
+                />
+              )}
+            />
 
 
 
 
-            </div>
+
+
+
+
+            <Field
+              name="damagedBy3rdParty"
+              defaultValue={false}
+              component={({ input }) => (
+                <FormControlLabel
+                  {...input}
+                  control={
+                    <Checkbox
+                      checked={input.value}
+                      color="default"
+                      value="checkedG"
+                    />
+                  }
+                  label="damaged by 3rd party (airline)"
+                />
+              )}
+            />
+          </div>
           </div>
         </div>
       </form>
