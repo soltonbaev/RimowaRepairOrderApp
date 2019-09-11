@@ -6,6 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import DatePicker from "../DatePicker";
 import Input from "../CustomInput";
 import { validator } from "../../utils";
+import Select from "@material-ui/core/Select";
 const { required, maxLength, minLength } = validator;
 
 const maxLength12 = maxLength(12);
@@ -18,7 +19,7 @@ function inputField(props) {
 
 function datePicker({ input, ...rest }) {
   const { meta = {} } = rest;
-  const { error, warning } = meta;
+  const { error, warning, pristine } = meta;
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <DatePicker
@@ -27,12 +28,31 @@ function datePicker({ input, ...rest }) {
         value={input.value ? input.value : null}
         label="Needs by"
       />
-      {error || warning ? (
-        (error && <span style={{ color: "red", fontSize: "12px" }}>{error}</span>) ||
-        (warning && <span style={{ color: "red", fontSize: "12px" }}>{warning}</span>)
+      {!pristine && (error || warning) ? (
+        (error && (
+          <span style={{ color: "red", fontSize: "12px" }}>{error}</span>
+        )) ||
+        (warning && (
+          <span style={{ color: "red", fontSize: "12px" }}>{warning}</span>
+        ))
       ) : (
         <span style={{ height: "15px" }} />
       )}
+    </div>
+  );
+}
+
+function select({ input }) {
+  return (
+    <div>
+      <div className="dropdownSpacer"></div>
+      <div className="dropdownWrapper">
+        <Select {...input} native value={input.value || ""}>
+          <option value="">Origin (select an option)</option>
+          <option value="WALK_IN">Walk in</option>
+          <option value="SHIPPED">Shipped to store</option>
+        </Select>
+      </div>
     </div>
   );
 }
@@ -44,11 +64,22 @@ const createItemForm = itemNum => {
       <form onSubmit={handleSubmit}>
         <div className="itemForm">
           <div className="row">
-            <Field
-              name="needsBy"
-              component={datePicker}
-              validate={[required]}
-            />
+            <div className="inputField">
+              <Field
+                name="needsBy"
+                component={datePicker}
+                validate={[required]}
+              />
+            </div>
+            <div className="inputField">
+              <Field
+                name="walkinOrShipped"
+                defaultValue="WALK_IN"
+                margin="normal"
+                component={select}
+                validate={[required]}
+              />
+            </div>
           </div>
           <div className="row">
             <Field
@@ -82,26 +113,65 @@ const createItemForm = itemNum => {
               label="Reason for repair"
               margin="normal"
               component={inputField}
+              validate={[required]}
             />
           </div>
-          <div className="checkboxContainer">
-            <Field
-              name="warranty"
-              defaultValue={false}
-              component={({ input }) => (
-                <FormControlLabel
-                  {...input}
-                  control={
-                    <Checkbox
-                      checked={Boolean(input.value)}
-                      color="default"
-                      value="checkedG"
-                    />
-                  }
-                  label="check the box if under warranty"
-                />
-              )}
-            />
+          <div className="row">
+            <div className="checkboxWrapper">
+              <Field
+                name="warranty"
+                defaultValue={false}
+                component={({ input }) => (
+                  <FormControlLabel
+                    {...input}
+                    control={
+                      <Checkbox
+                        checked={input.value}
+                        color="default"
+                        value="checkedG"
+                      />
+                    }
+                    label="under warranty"
+                  />
+                )}
+              />
+
+              <Field
+                name="replacementCaseIssued"
+                defaultValue={false}
+                component={({ input }) => (
+                  <FormControlLabel
+                    {...input}
+                    control={
+                      <Checkbox
+                        checked={Boolean(input.value)}
+                        color="default"
+                        value="checkedG"
+                      />
+                    }
+                    label="replacement case issued"
+                  />
+                )}
+              />
+
+              <Field
+                name="damagedBy3rdParty"
+                defaultValue={false}
+                component={({ input }) => (
+                  <FormControlLabel
+                    {...input}
+                    control={
+                      <Checkbox
+                        checked={input.value}
+                        color="default"
+                        value="checkedG"
+                      />
+                    }
+                    label="damaged by 3rd party (airline)"
+                  />
+                )}
+              />
+            </div>
           </div>
         </div>
       </form>

@@ -95,7 +95,9 @@ RIMOWA
 </tr>
 <tr>
 <td style="padding: 2px 20px 2px 20px;"> Reason For Repair  </td>
-<td style="padding: 2px 20px 2px 20px;">  {{reasonForRepair}} </td>
+<td style="padding: 2px 20px 2px 20px;"> <ul>{{#each reasonForRepair as |reason i|}}
+<li>{{reason}}</li>{{/each}}
+</ul></td>
 </tr>
 <tr>
 <td style="padding: 2px 20px 2px 20px;">  Warranty:  </td>
@@ -113,4 +115,3 @@ const templateFunction = Handlebars.compile(templateString);
 export const getPDFTemplate = data => {
   return templateFunction(data);
 };
-

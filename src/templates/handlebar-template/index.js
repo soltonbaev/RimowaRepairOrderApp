@@ -60,6 +60,10 @@ const templateString = `<div class="template-body">
     <td>{{dateConvert needsBy}}</td>
   </tr>
   <tr>
+    <td>Origin:</td>
+    <td>{{walkinOrShipped}}</td>
+  </tr>
+  <tr>
     <td>Serial Number: </td>
     <td>{{serialNumber}}</td>
   </tr>
@@ -79,6 +83,14 @@ const templateString = `<div class="template-body">
     <td>  Warranty:  </td>
     <td> {{warranty}} </td>
   </tr>
+  <tr>
+  <td>  Replacement Case Issued  </td>
+  <td> {{replacementCaseIssued}} </td>
+</tr>
+<tr>
+<td>  Damaged by Third Party (Airline):  </td>
+<td> {{damagedBy3rdParty}} </td>
+</tr>
   </table>
 
   {{/each}}

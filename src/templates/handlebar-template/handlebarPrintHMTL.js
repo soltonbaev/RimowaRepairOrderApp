@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import moment from "moment";
-Handlebars.registerHelper("dateConvert", function (value, options) {
+Handlebars.registerHelper("dateConvert", function(value, options) {
   return moment(value).format("MMM DD YYYY");
 });
 export const templateString = `
@@ -59,7 +59,7 @@ export const templateString = `
 
 
   {{#each customer.customer_items as |item i|}}
- 
+
   <div class="pageContainer"style="width: 100vw; height: 100vh; page-break-after: always; border: 1px solid lightgrey;">
   <div class="rimowaLogoWrapper" style="padding: 40px;">
   <div class="rimowaLogoText" style="text-align: center;margin: 5px;font-size: 25px;font-weight: 400;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;color: #00000091;">
@@ -81,6 +81,10 @@ export const templateString = `
         <td style="padding: 2px 20px 2px 20px;">{{dateConvert needsBy}}</td>
       </tr>
       <tr>
+      <td style="padding: 2px 20px 2px 20px;">Origin</td>
+      <td style="padding: 2px 20px 2px 20px;">{{walkinOrShipped}}</td>
+    </tr>
+      <tr>
         <td style="padding: 2px 20px 2px 20px;">Serial Number: </td>
         <td style="padding: 2px 20px 2px 20px;">{{serialNumber}}</td>
       </tr>
@@ -94,20 +98,30 @@ export const templateString = `
       </tr>
       <tr>
         <td style="padding: 2px 20px 2px 20px;"> Reason For Repair  </td>
-        <td style="padding: 2px 20px 2px 20px;">  {{reasonForRepair}} </td>
+        <td style="padding: 2px 20px 2px 20px;"> <ul>{{#each reasonForRepair as |reason i|}}
+<li>{{reason}}</li>{{/each}}
+</ul></td>
       </tr>
         <tr>
         <td style="padding: 2px 20px 2px 20px;">  Warranty:  </td>
         <td style="padding: 2px 20px 2px 20px;"> {{warranty}} </td>
       </tr>
+      <tr>
+      <td style="padding: 2px 20px 2px 20px;"> Replacement Case Issued:  </td>
+      <td style="padding: 2px 20px 2px 20px;"> {{replacementCaseIssued}} </td>
+    </tr>
+    <tr>
+    <td style="padding: 2px 20px 2px 20px;"> Damaged by Third Party (Airline): </td>
+    <td style="padding: 2px 20px 2px 20px;"> {{damagedBy3rdParty}} </td>
+  </tr>
+
+
       </table>
       </div>
   </div>
       {{/each}}
 
 `;
-
-
 
 const templateFunction = Handlebars.compile(templateString);
 
