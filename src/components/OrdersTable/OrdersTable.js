@@ -68,24 +68,24 @@ export default class CustomizedTables extends React.Component {
           className="confirmDelete"
           open={Boolean(this.state.deleteConfirmAnchor)}
           onClose={this.closeDeleteConfirm}
-          anchorOrigin={{
-            vertical: "center",
-            horizontal: "center"
-          }}
+          // anchorOrigin={{
+          //   vertical: "center",
+          //   horizontal: "center"
+          // }}
           anchorEl={this.rootRef}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center"
-          }}
+          // transformOrigin={{
+          //   vertical: "top",
+          //   horizontal: "center"
+          // }}
         >
           <ConfirmDialog
-            title="Authorized action"
+            title="Delete this ticket?"
             onConfirm={e => {
               e.stopPropagation();
               this.closeDeleteConfirm();
               dispatch(deleteOrders(this.state.deletingUID));
             }}
-            message="Deleting order requires confirmation!"
+            message="This will permanently erase the ticket from database"
             onCancel={this.closeDeleteConfirm}
             confirmText="Confirm"
             cancelText="Cancel"

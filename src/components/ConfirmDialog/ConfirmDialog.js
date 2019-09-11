@@ -46,26 +46,33 @@ export default class ConfirmDialog extends Component {
     } = this.props;
     return (
       <div className="confirm">
-        <h2>{title}</h2>
-        <h3>{message}</h3>
+        <h2 style->{title}</h2>
+        <p>{message}</p>
         {confirmWithInput && (
           <div className="buttonContainer">
             <Input
               type="password"
               error={this.state.error}
-              label={this.state.errorText || "Enter action password"}
+              label={this.state.errorText || "Enter the password"}
               onChange={this.onPassChange}
             />
-            <WrappedButton label="submit" onClick={this.submitPassword} />
+            <div className="submitWrapper">
+              
+            <WrappedButton className="passSubmitButton" label="submit" onClick={this.submitPassword} />
+            </div>
           </div>
         )}
         <div className="buttonContainer">
+        <div className="dgButtonWrapper">
           <WrappedButton
             disabled={this.state.confirmDisabled}
             label={confirmText}
             onClick={onConfirm}
           />
+          </div>
+          <div className="dgButtonWrapper">
           <WrappedButton label={cancelText} onClick={onCancel} />
+          </div>
         </div>
       </div>
     );

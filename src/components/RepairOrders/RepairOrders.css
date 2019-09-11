@@ -14,6 +14,30 @@
   color: #00000091;
 } */
 
+/* .submitSpacer {
+ height:30px;
+} */
+
+.dgButtonWrapper {
+  margin: 0 10px 0 10px;
+}
+
+.passSubmitButton {
+padding: 30px;
+  
+}
+.confirmDelete .MuiPopover-paper {
+  padding: 30px;
+  position: absolute;
+  margin: auto;
+  height: 300px;
+    width: 500px;
+  top: 0!important;
+  right: 0;
+  bottom: 0;
+  left: 0!important;
+}
+
 .tableContainer {
   display: flex;
   flex-direction: column;
