@@ -6,32 +6,18 @@ import "./ConfirmDialog.css";
 
 export default class ConfirmDialog extends Component {
   state = {
-    confirmDisabled: false,
-    password: ""
+    confirmDisabled: false
   };
 
   componentDidMount() {
     this.props.confirmWithInput && this.setState({ confirmDisabled: true });
   }
 
-  onPassChange = e =>
-    this.setState({ password: e.target.value, error: false, errorText: null });
-
-  submitPassword = () => {
-    if (isActionAlowed(this.state.password)) {
+  changePassword = e => {
+    isActionAlowed(e.target.value) &&
       this.setState({
-        confirmDisabled: false,
-        password: "",
-        error: false,
-        errorText: null
+        confirmDisabled: false
       });
-    } else {
-      this.setState({
-        confirmDisabled: true,
-        error: true,
-        errorText: "Invalid password"
-      });
-    }
   };
 
   render() {
@@ -52,11 +38,9 @@ export default class ConfirmDialog extends Component {
           <div className="buttonContainer">
             <Input
               type="password"
-              error={this.state.error}
-              label={this.state.errorText || "Enter action password"}
-              onChange={this.onPassChange}
+              label="Enter action password"
+              onChange={this.changePassword}
             />
-            <WrappedButton label="submit" onClick={this.submitPassword} />
           </div>
         )}
         <div className="buttonContainer">
