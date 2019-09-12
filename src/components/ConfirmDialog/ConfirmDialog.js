@@ -44,12 +44,17 @@ export default class ConfirmDialog extends Component {
           </div>
         )}
         <div className="buttonContainer">
-          <WrappedButton className="dgButtonWrapper"
+          <WrappedButton
+            className="dgButtonWrapper"
             disabled={this.state.confirmDisabled}
             label={confirmText}
             onClick={onConfirm}
           />
-          <WrappedButton className="dgButtonWrapper" label={cancelText} onClick={onCancel} />
+          <WrappedButton
+            className="dgButtonWrapper"
+            label={cancelText}
+            onClick={onCancel}
+          />
         </div>
       </div>
     );
