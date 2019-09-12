@@ -4,7 +4,6 @@ import { ROUTES } from "../../constants/routes";
 import WrappedButton from "../WrappedButton";
 import { Popover } from "@material-ui/core";
 import ConfirmDialog from "../ConfirmDialog";
-import { AUTH_INTERVAL } from "../../config";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -15,13 +14,16 @@ export default class Home extends React.Component {
     this.rootRef = null;
   }
 
-  showAuthConfirm = () => this.setState({ authConfirm: true });
+  showAuthConfirm = () => {
+    const { authenticated, history } = this.props;
+    if (authenticated) return history.push(ROUTES.REPAIR_ORDERS.PATH);
+    this.setState({ authConfirm: true });
+  };
   closeAuthConfirm = () => this.setState({ authConfirm: false });
 
   onConfirm = () => {
-    const { authenticate, unauthenticate, history } = this.props;
+    const { authenticate, history } = this.props;
     authenticate();
-    setTimeout(unauthenticate, AUTH_INTERVAL);
     setTimeout(() => history.push(ROUTES.REPAIR_ORDERS.PATH), 100);
   };
 
