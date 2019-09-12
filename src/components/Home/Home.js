@@ -2,8 +2,29 @@ import React from "react";
 import "./Home.css";
 import { ROUTES } from "../../constants/routes";
 import WrappedButton from "../WrappedButton";
+import { Popover } from "@material-ui/core";
+import ConfirmDialog from "../ConfirmDialog";
+import { AUTH_INTERVAL } from "../../config";
 
 export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      authConfirm: false
+    };
+    this.rootRef = null;
+  }
+
+  showAuthConfirm = () => this.setState({ authConfirm: true });
+  closeAuthConfirm = () => this.setState({ authConfirm: false });
+
+  onConfirm = () => {
+    const { authenticate, unauthenticate, history } = this.props;
+    authenticate();
+    setTimeout(unauthenticate, AUTH_INTERVAL);
+    setTimeout(() => history.push(ROUTES.REPAIR_ORDERS.PATH), 100);
+  };
+
   render() {
     return (
       <div className="homeContainer bodyContainer">
@@ -11,7 +32,31 @@ export default class Home extends React.Component {
           <div className="rimowaLogoText">RIMOWA</div>
           <div className="rimowaSubtitle">Client Care</div>
         </div>
-        <div className="rimowaMid">
+        <div className="rimowaMid" ref={ref => (this.rootRef = ref)}>
+          <Popover
+            className="confirmDelete"
+            open={Boolean(this.state.authConfirm)}
+            onClose={this.closeAuthConfirm}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "center"
+            }}
+            anchorEl={this.rootRef}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center"
+            }}
+          >
+            <ConfirmDialog
+              title="Authorized action"
+              message="Confirm access rights with password!"
+              onCancel={this.closeAuthConfirm}
+              confirmText="Confirm"
+              onConfirm={this.onConfirm}
+              cancelText="Cancel"
+              confirmWithInput={true}
+            />
+          </Popover>
           <div className="rimowaTitle">
             Welcome <br />
             <br />
@@ -23,7 +68,7 @@ export default class Home extends React.Component {
             <WrappedButton
               variant="outlined"
               className="button"
-              href={ROUTES.REPAIR_ORDERS.PATH}
+              onClick={this.showAuthConfirm}
               label="View tickets"
             />
             <WrappedButton

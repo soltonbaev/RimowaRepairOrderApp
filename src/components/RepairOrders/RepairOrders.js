@@ -1,5 +1,6 @@
 import React from "react";
 import "./RepairOrders.css";
+import { Redirect } from "react-router-dom";
 import OrdersTable from "../OrdersTable";
 import { getOrders } from "../../store/reducer";
 import WrappedButton from "../WrappedButton";
@@ -29,7 +30,8 @@ export default class RepairOrders extends React.Component {
   }
 
   render() {
-    const { orders, dispatch, ordersLoading } = this.props;
+    const { orders, dispatch, ordersLoading, authenticated } = this.props;
+    if (!authenticated) return <Redirect to={ROUTES.HOME} />;
     return (
       <div className="tableContainer">
         <div className="rimowaLogoText">RIMOWA</div>

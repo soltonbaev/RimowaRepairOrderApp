@@ -1,10 +1,23 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import { SET_ORDERS_LIST, GET_ORDERS, SET_CUSTOMERS_LIST } from "./actionTypes";
+import { SET_ORDERS_LIST, GET_ORDERS, SET_CUSTOMERS_LIST, AUTH_TRUE, AUTH_FALSE } from "./actionTypes";
 import { setCustomers, setOrders } from "./actions";
 import api from "../api";
 
 export default combineReducers({
+  authenticated: (state = false, action) => {
+    switch (action.type) {
+      case AUTH_TRUE: {
+        return true;
+      }
+      case AUTH_FALSE: {
+        return false;
+      }
+      default: {
+        return state;
+      }
+    }
+  },
   ordersLoading: (state = true, action) => {
     switch (action.type) {
       case GET_ORDERS: {

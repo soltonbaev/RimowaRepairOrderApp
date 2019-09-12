@@ -2,3 +2,4 @@
 export const API_URL = "http://localhost:3001";
 
 export const ACTION_PASS = "password";
+export const AUTH_INTERVAL = 180000;
