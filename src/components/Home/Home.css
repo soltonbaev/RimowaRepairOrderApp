@@ -5,14 +5,6 @@
   margin: 0mm;
 }
 
-@media print {
-
-  .header,
-  .hide {
-    visibility: hidden
-  }
-}
-
 .bodyContainer {
   display: flex;
   /* align-items: center; */
@@ -33,7 +25,7 @@
 
 .rimowaMid {
   /* height: 70%; */
-  flex:3;
+  flex:4;
   display: flex;
   margin: 0 25% 0 25%;
   flex-direction: column;
@@ -68,6 +60,7 @@
 
 
   .rimowaMid {
+    flex:4;
     height: 60%;
     display: flex;
     margin: 0 2% 0 2%;
@@ -82,9 +75,10 @@
 
 
   .rimowaMid {
-    height: 60%;
+    flex:4;
+    /* height: 60%; */
     display: flex;
-    margin: 0 10% 0 10%;
+    margin: 0;
     flex-direction: column;
     justify-content: space-evenly;
     text-align: center;

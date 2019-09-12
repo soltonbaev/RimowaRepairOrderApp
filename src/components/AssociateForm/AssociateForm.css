@@ -14,11 +14,16 @@
   color: #00000091;
 } */
 
+/* .inputField {
+  display: initial!important;
+} */
+
+
 .dropdownSpacer {
   height: 17px;
 }
 
-.inputField
+/* .inputField
   .MuiSelect-root
   .MuiSelect-select
   .MuiInputBase-input
@@ -26,7 +31,7 @@
   .MuiInputBase-inputSelect {
   flex: 1;
   width: 100%;
-}
+} */
 
 .dropdownWrapper {
   /* display: flex;
@@ -37,24 +42,28 @@
 .associateBodyContainer .MuiFormControl-marginNormal {
   width: 80%;
   margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .associateBodyContainer {
-  /* margin:auto; */
+  margin-left:auto;
+  margin-right: auto;
 }
-.associateFormContainer {
-  /* margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; */
-  height: 100vh;
-}
+
+/* target rimowaMid div in associate form page */
+
+/* .associateFormContainer .rimowaMid {
+margin: 0 10% ;
+} */
 
 .itemForm {
   align-items: center;
   /* justify-content: center; */
   flex-direction: column;
+}
+
+.associateFormContainer .MuiTypography-body1 {
+  text-align: left;
 }
 
 .associateFormContainer .row {
@@ -76,6 +85,8 @@
 .checkboxWrapper {
   font-size: 12px;
   padding: 16px;
+  display: flex;
+  flex-direction: row;
 }
 .checkbox {
   margin: 10px;
@@ -90,7 +101,7 @@
 
 .paperContainer {
   padding: 2%;
-  display: flex;
+  /* display: flex; */
 }
 
 .addItemButton {
@@ -102,6 +113,11 @@
 }
 
 @media screen and (max-width: 480px) {
+
+  .checkboxWrapper {
+    display: unset;
+  }
+
   .associateFormContainer .inputField {
     /* flex: 1; */
     margin: 0 5px 0 5px;

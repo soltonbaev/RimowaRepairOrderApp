@@ -48,8 +48,8 @@ export default class Home extends React.Component {
             }}
           >
             <ConfirmDialog
-              title="Authorized action"
-              message="Confirm access rights with password!"
+              title="Authorization required"
+              message="To view the available tickets enter the password"
               onCancel={this.closeAuthConfirm}
               confirmText="Confirm"
               onConfirm={this.onConfirm}

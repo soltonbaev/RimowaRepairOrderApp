@@ -38,18 +38,18 @@ export default class ConfirmDialog extends Component {
           <div className="buttonContainer">
             <Input
               type="password"
-              label="Enter action password"
+              label="Enter password"
               onChange={this.changePassword}
             />
           </div>
         )}
         <div className="buttonContainer">
-          <WrappedButton
+          <WrappedButton className="dgButtonWrapper"
             disabled={this.state.confirmDisabled}
             label={confirmText}
             onClick={onConfirm}
           />
-          <WrappedButton label={cancelText} onClick={onCancel} />
+          <WrappedButton className="dgButtonWrapper" label={cancelText} onClick={onCancel} />
         </div>
       </div>
     );

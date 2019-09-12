@@ -21,7 +21,7 @@ function datePicker({ input, ...rest }) {
   const { meta = {} } = rest;
   const { error, warning, pristine } = meta;
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div>
       <DatePicker
         {...input}
         {...meta}
@@ -30,13 +30,13 @@ function datePicker({ input, ...rest }) {
       />
       {!pristine && (error || warning) ? (
         (error && (
-          <span style={{ color: "red", fontSize: "12px" }}>{error}</span>
+          <div style={{ color: "red", fontSize: "12px" }}>{error}</div>
         )) ||
         (warning && (
-          <span style={{ color: "red", fontSize: "12px" }}>{warning}</span>
+          <div style={{ color: "red", fontSize: "12px" }}>{warning}</div>
         ))
       ) : (
-          <span style={{ height: "15px" }} />
+          <div style={{ height: "15px" }} />
         )}
     </div>
   );
@@ -44,7 +44,7 @@ function datePicker({ input, ...rest }) {
 
 function select({ input }) {
   return (
-      <Select {...input} native value={input.value || ""}>
+      <Select className="inputField" {...input} native value={input.value || ""}>
         <option value="">Origin (select an option)</option>
         <option value="WALK_IN">Walk in</option>
         <option value="SHIPPED">Shipped to store</option>

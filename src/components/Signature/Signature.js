@@ -140,11 +140,12 @@ export default class Signature extends React.Component {
                 onClick={() => this.printOrderInfo(this.state.orderData)}
                 label="Print this ticket"
               />
-              <WrappedButton
+              {/* <WrappedButton
                 className="viewTickets"
-                href={ROUTES.REPAIR_ORDERS.PATH}
+                onClick={this.showAuthConfirm}
+                // href={ROUTES.REPAIR_ORDERS.PATH}
                 label="View Tickets"
-              />
+              /> */}
               <WrappedButton
                 href={ROUTES.NEW_REPAIR_ORDER.NESTED.CLIENT}
                 label="New ticket >"

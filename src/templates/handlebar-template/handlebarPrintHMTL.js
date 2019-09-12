@@ -61,15 +61,15 @@ export const templateString = `
   {{#each customer.customer_items as |item i|}}
 
   <div class="pageContainer"style="width: 100vw; height: 100vh; page-break-after: always; border: 1px solid lightgrey;">
-  <div class="rimowaLogoWrapper" style="padding: 40px;">
+  <div class="rimowaLogoWrapper" style="padding: 10px;">
   <div class="rimowaLogoText" style="text-align: center;margin: 5px;font-size: 25px;font-weight: 400;font-family: &quot;Favorit Light&quot;, Arial, sans-serif;color: #00000091;">
   RIMOWA
   </div>
-<p class="rimowaSubtitle" style="text-align: center;text-transform: uppercase;letter-spacing: 2px;font-size: 10px;margin: 0% 0% 2% 0;color: #00000091;">Client Care</p>
+<p class="rimowaSubtitle" style="text-align: center;text-transform: uppercase;letter-spacing: 2px;font-size: 10px;margin: 0% 0% 10px 0;color: #00000091;">Client Care</p>
 </div>
 
 <p class="ticketSummary" style="text-align: center;text-transform: uppercase;letter-spacing: 1px;font-size: 14px;"> Ticket for {{customer.firstName}} {{customer.lastName}} Item {{inc i}}  </p>
-<div class="associateTableContainer" style="font-size: 20px; border: 1px solid lightgrey;padding: 40px 10px;margin: 40px;">
+<div class="associateTableContainer"; border: 1px solid lightgrey;padding: 10px 10px;margin: 10px;">
   <table>
 <tr><th style="padding: 10px 20px;text-align: left;">Associate to Complete:</th>
 </tr><tr><td style="padding: 2px 20px 2px 20px;">Associate Name:</td>
@@ -96,12 +96,7 @@ export const templateString = `
         <td style="padding: 2px 20px 2px 20px;">Model:  </td>
         <td style="padding: 2px 20px 2px 20px;">{{model}}</td>
       </tr>
-      <tr>
-        <td style="padding: 2px 20px 2px 20px;"> Reason For Repair  </td>
-        <td style="padding: 2px 20px 2px 20px;"> <ul>{{#each reasonForRepair as |reason i|}}
-<li>{{reason}}</li>{{/each}}
-</ul></td>
-      </tr>
+     
         <tr>
         <td style="padding: 2px 20px 2px 20px;">  Warranty:  </td>
         <td style="padding: 2px 20px 2px 20px;"> {{warranty}} </td>
@@ -117,6 +112,13 @@ export const templateString = `
 
 
       </table>
+
+      
+      <h4 style="padding: 0 25px 0 25px;"> Reason For Repair  </h4>
+      <ul>{{#each reasonForRepair as |reason i|}}
+<li style="margin: 0 10px 0 10px;">{{reason}}</li>{{/each}}
+</ul>
+
       </div>
   </div>
       {{/each}}
