@@ -79,13 +79,13 @@ export default class CustomizedTables extends React.Component {
           }}
         >
           <ConfirmDialog
-            title="Authorized action"
+            title="Delete this ticket?"
             onConfirm={e => {
               e.stopPropagation();
               this.closeDeleteConfirm();
               dispatch(deleteOrders(this.state.deletingUID));
             }}
-            message="Deleting order requires confirmation!"
+            message="This action will permanently erase the ticket"
             onCancel={this.closeDeleteConfirm}
             confirmText="Confirm"
             cancelText="Cancel"
@@ -187,7 +187,7 @@ export default class CustomizedTables extends React.Component {
           justifyContent: "center"
         }}
       >
-        <h2>Orders table empty.</h2>
+        <h2>There are no tickets in the database</h2>
       </div>
     ) : (
       <div

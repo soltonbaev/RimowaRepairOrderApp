@@ -10,9 +10,11 @@ Handlebars.registerHelper("inc", function(value, options) {
 const templateString = `<div class="template-body">
 <p class="ticketSummary"> Ticket Details</p>
 
-<div class="clientToCompleteTable">
-<table>
-<tr><th>Client to Complete:</th></tr>
+<div class="clientToCompleteTable" >
+<h3>Client to Complete:</h3>
+<div style="display: flex; flex-direction: row;">
+<div style="flex:1;">
+<table class="clientTb1">
   <tr>
     <td>First Name:</td>
     <td>{{customer.firstName}}</td>
@@ -29,6 +31,11 @@ const templateString = `<div class="template-body">
     <td>Phone:  </td>
     <td>{{customer.phone}}</td>
   </tr>
+  </table>
+  </div>
+
+  <div style="flex:1;">
+  <table class="clientTb2">
    <tr>
     <td> Company Name: </td>
     <td>  {{customer.companyName}} </td>
@@ -44,20 +51,29 @@ const templateString = `<div class="template-body">
 
 </table>
 </div>
+</div>
+</div>
+</div>
 
 <div class="associateToCompleteTable">
+<h3>Associate to Complete:</h3>
  <table>
- <tr><th>Associate to Complete:</th>
+ 
  <tr><td>Associate Name:</td>
  <td>{{associateName}}</td></tr></table>
   {{#each customer.customer_items as |item i|}}
 
-
-        <table>
+  <div style="display: flex; flex-direction: row;">
+<div style="flex:1;">
+        <table class="associateTb1">
         <tr><th class="itemTitle">Item {{inc i}}</th></tr>
   <tr>
     <td>Due date:</td>
     <td>{{dateConvert needsBy}}</td>
+  </tr>
+  <tr>
+    <td>Origin:</td>
+    <td>{{walkinOrShipped}}</td>
   </tr>
   <tr>
     <td>Serial Number: </td>
@@ -67,20 +83,43 @@ const templateString = `<div class="template-body">
     <td>Lock Combo: </td>
     <td>{{lockCombo}}</td>
   </tr>
+  </table>
+  </div>
+  <div style="flex:1;">
+  <table class="associateTb2">
+  <tr><td><br/></br></td></tr>
    <tr>
     <td>Model:  </td>
     <td>{{model}}</td>
   </tr>
    <tr>
-    <td> Reason For Repair  </td>
-    <td>  {{reasonForRepair}} </td>
+    </td>
   </tr>
      <tr>
     <td>  Warranty:  </td>
     <td> {{warranty}} </td>
   </tr>
+  <tr>
+  <td>  Replacement Case Issued  </td>
+  <td> {{replacementCaseIssued}} </td>
+</tr>
+<tr>
+<td>  Damaged by Third Party (Airline):  </td>
+<td> {{damagedBy3rdParty}} </td>
+</tr>
   </table>
+  </div>
+</div>
+  <div>
+  <ul>
 
+  <h4> Reason For Repair</h4>
+  {{#each reasonForRepair as |item i|}}
+<li style="margin:10px"> {{item i}} </li>
+
+{{/each}}
+</ul>
+</div>
   {{/each}}
   </div>
 </div>`;

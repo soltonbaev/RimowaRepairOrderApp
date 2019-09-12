@@ -16,7 +16,10 @@ const ITEM_FORM_FIELDS = [
   "lockCombo",
   "model",
   "reasonForRepair",
-  "warranty"
+  "warranty",
+  "damagedBy3rdParty",
+  "replacementCaseIssued",
+  "walkinOrShipped"
 ];
 
 export default class AssociateForm extends React.Component {
@@ -47,6 +50,8 @@ export default class AssociateForm extends React.Component {
     } else {
       this.addItem();
     }
+    window.sessionStorage.associateName &&
+      this.setState({ associateName: window.sessionStorage.associateName });
   }
 
   getItemData = selector => {

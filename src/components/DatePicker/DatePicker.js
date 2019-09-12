@@ -9,6 +9,7 @@ const DatePicker = ({ value, onChange, label, touched, error, warning }) => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <KeyboardDatePicker
+        required
         disableToolbar
         variant="inline"
         format="MM/dd/yyyy"

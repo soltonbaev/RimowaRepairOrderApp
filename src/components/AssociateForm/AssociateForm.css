@@ -14,19 +14,47 @@
   color: #00000091;
 } */
 
+/* .inputField {
+  display: initial!important;
+} */
 
+
+.dropdownSpacer {
+  height: 17px;
+}
+
+/* .inputField
+  .MuiSelect-root
+  .MuiSelect-select
+  .MuiInputBase-input
+  .MuiInput-input
+  .MuiInputBase-inputSelect {
+  flex: 1;
+  width: 100%;
+} */
+
+.dropdownWrapper {
+  /* display: flex;
+  justify-content: flex-start;
+  width: 100%; */
+}
+
+.associateBodyContainer .MuiFormControl-marginNormal {
+  width: 80%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .associateBodyContainer {
-  /* margin:auto; */
+  margin-left:auto;
+  margin-right: auto;
 }
-.associateFormContainer {
-  /* margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; */
-  height: 100vh;
-}
+
+/* target rimowaMid div in associate form page */
+
+/* .associateFormContainer .rimowaMid {
+margin: 0 10% ;
+} */
 
 .itemForm {
   align-items: center;
@@ -34,22 +62,32 @@
   flex-direction: column;
 }
 
+.associateFormContainer .MuiTypography-body1 {
+  text-align: left;
+}
+
 .associateFormContainer .row {
   display: flex;
   flex-direction: row;
   justify-content: center;
   /* flex: 1; */
-  margin: 10px 10px 10px 10px ;
+  margin: 10px 10px 10px 10px;
   padding: 0 10px 0 10px;
 }
 
 .associateFormContainer .inputField {
   /* flex: 1; */
   margin: 0 10px 0 10px;
-  width:80%;
+  width: 80%;
   /* max-width: 300px */
 }
 
+.checkboxWrapper {
+  font-size: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+}
 .checkbox {
   margin: 10px;
 }
@@ -61,26 +99,29 @@
   font-family: "Favorit Light", Arial, sans-serif;
 }
 
-.paperContainer{
-padding: 2%;
-
+.paperContainer {
+  padding: 2%;
+  /* display: flex; */
 }
 
-.addItemButton{
+.addItemButton {
   text-size: 10px;
 }
 
-
-.associateFormContainer .MuiButton-outlined{
+.associateFormContainer .MuiButton-outlined {
   margin: 3vh;
 }
 
+@media screen and (max-width: 480px) {
 
-@media screen and (max-width: 480px){
+  .checkboxWrapper {
+    display: unset;
+  }
+
   .associateFormContainer .inputField {
     /* flex: 1; */
     margin: 0 5px 0 5px;
-    width:100%;
+    width: 100%;
     /* max-width: 300px */
   }
 
@@ -91,21 +132,15 @@ padding: 2%;
     /* flex: 1; */
     margin: 0px;
     padding: 0 10px 0 10px;
-}
+  }
 
-
-.associateFormContainer .MuiButton-root {
+  .associateFormContainer .MuiButton-root {
     padding: 2px 8px;
     font-size: 0.8rem;
     min-width: 64px;
   }
-  
+
   .associateFormContainer .MuiButton-root {
     margin: 1vh;
   }
-  
-  
-  
-
 }
-
