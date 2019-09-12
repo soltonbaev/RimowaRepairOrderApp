@@ -36,24 +36,19 @@ function datePicker({ input, ...rest }) {
           <span style={{ color: "red", fontSize: "12px" }}>{warning}</span>
         ))
       ) : (
-        <span style={{ height: "15px" }} />
-      )}
+          <span style={{ height: "15px" }} />
+        )}
     </div>
   );
 }
 
 function select({ input }) {
   return (
-    <div>
-      <div className="dropdownSpacer"></div>
-      <div className="dropdownWrapper">
-        <Select {...input} native value={input.value || ""}>
-          <option value="">Origin (select an option)</option>
-          <option value="WALK_IN">Walk in</option>
-          <option value="SHIPPED">Shipped to store</option>
-        </Select>
-      </div>
-    </div>
+      <Select {...input} native value={input.value || ""}>
+        <option value="">Origin (select an option)</option>
+        <option value="WALK_IN">Walk in</option>
+        <option value="SHIPPED">Shipped to store</option>
+      </Select>
   );
 }
 
@@ -71,14 +66,18 @@ const createItemForm = itemNum => {
                 validate={[required]}
               />
             </div>
+
             <div className="inputField">
-              <Field
-                name="walkinOrShipped"
-                defaultValue="WALK_IN"
-                margin="normal"
-                component={select}
-                validate={[required]}
-              />
+              <div className="dropdownSpacer"></div>
+              <div className="dropdownWrapper">
+                <Field
+                  name="walkinOrShipped"
+                  defaultValue="WALK_IN"
+                  margin="normal"
+                  component={select}
+                  validate={[required]}
+                />
+              </div>
             </div>
           </div>
           <div className="row">

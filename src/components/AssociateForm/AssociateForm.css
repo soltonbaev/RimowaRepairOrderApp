@@ -29,9 +29,9 @@
 }
 
 .dropdownWrapper {
-  display: flex;
+  /* display: flex;
   justify-content: flex-start;
-  width: 100%;
+  width: 100%; */
 }
 
 .associateBodyContainer .MuiFormControl-marginNormal {
