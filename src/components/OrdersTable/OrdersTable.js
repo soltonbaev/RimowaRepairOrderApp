@@ -12,6 +12,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import moment from "moment";
 
 import OrderPreview from "../OrderPreviewTemplate";
+import OrdersStatus from "../OrderStatusDialog";
 
 import "./OrdersTable.css";
 import { deleteOrders } from "../../store/reducer";
@@ -38,7 +39,10 @@ export default class CustomizedTables extends React.Component {
       anchorEl: null,
       orderToPreview: null,
       deleteConfirmAnchor: null,
-      deletingUID: null
+      deletingUID: null,
+      statusSelectAnchor: null,
+      selectedStatus: null,
+      statusChangeUID: null
     };
     this.rootRef = null;
   }
@@ -53,6 +57,17 @@ export default class CustomizedTables extends React.Component {
 
   handleClose = () => this.setState({ anchorEl: null, orderToPreview: null });
 
+  showStatusSelect = (anchor, status, uid) => {
+    this.setState({
+      statusSelectAnchor: anchor,
+      selectedStatus: status,
+      statusChangeUID: uid
+    });
+  };
+
+  hideStatusSelect = () =>
+    this.setState({ statusSelectAnchor: null, selectedStatus: null });
+
   async printOrderInfo(order) {
     const w = window.open();
     await w.document.write(getHTMLDBTemplate(order));
@@ -64,6 +79,12 @@ export default class CustomizedTables extends React.Component {
     const { orders, dispatch, ordersLoading } = this.props;
     return !ordersLoading && orders.length ? (
       <Paper className="root" ref={ref => (this.rootRef = ref)}>
+        <OrdersStatus
+          selectedValue={this.state.selectedStatus}
+          uid={this.state.statusChangeUID}
+          anchor={this.state.statusSelectAnchor}
+          onClose={this.hideStatusSelect}
+        />
         <Popover
           className="confirmDelete"
           open={Boolean(this.state.deleteConfirmAnchor)}
@@ -158,7 +179,17 @@ export default class CustomizedTables extends React.Component {
                   {order.customer.customer_items.length}
                 </TableCell>
                 <TableCell align="center">
-                  <div style={{ fontStyle: "italic", fontWeight: "bold" }}>
+                  <div
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.showStatusSelect(
+                        e.currentTarget,
+                        order.orderStatus,
+                        order.uid
+                      );
+                    }}
+                    style={{ fontStyle: "italic", fontWeight: "bold" }}
+                  >
                     {order.orderStatus}
                   </div>
                 </TableCell>
