@@ -19,12 +19,8 @@ export const templateString = `
                     <table>
                     <tr><th style="padding: 10px 20px;text-align: left;">Client to Complete:</th></tr>
                       <tr>
-                        <td style="padding: 2px 20px 2px 20px;">First Name:</td>
-                        <td style="padding: 2px 20px 2px 20px;">{{customer.firstName}}</td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 2px 20px 2px 20px;">Last Name: </td>
-                        <td style="padding: 2px 20px 2px 20px;">{{customer.lastName}}</td>
+                        <td style="padding: 2px 20px 2px 20px;">Name:</td>
+                        <td style="padding: 2px 20px 2px 20px;">{{customer.firstName}} {{customer.lastName}}</td>
                       </tr>
                       <tr>
                         <td style="padding: 2px 20px 2px 20px;">Email: </td>
