@@ -1,4 +1,15 @@
-@page { size: auto;  margin: 0mm; }
+
+/* hightlight ticket status table cell */
+td .ticketStatus {
+  display: block;
+}
+
+.ticketStatus:hover {
+  border: 1px solid grey;
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
 
 
 .table {
@@ -6,7 +17,7 @@
   margin: 20px 0 20px 0;
   table-layout: fixed;
   width: 100%;
-  
+
 }
 
 td {
@@ -54,7 +65,7 @@ td {
 }
 
 .printButton {
-/* display: flex; */
+  /* display: flex; */
   margin-bottom: 20px !important;
   margin-top: -20px !important;
   /* justify-content: center; */
@@ -64,70 +75,70 @@ td {
 
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
 
- .tableContainer .MuiTableCell-root {
+  .tableContainer .MuiTableCell-root {
     padding: 2px 5px;
   }
-  
+
   .tableContainer td {
     padding: 0px;
   }
+}
+
+@media screen and (max-width: 480px) {
+
+  .tableContainer .MuiTableCell-root {
+    padding: 2px 5px;
   }
 
-  @media screen and (max-width: 480px){
-
-    .tableContainer .MuiTableCell-root {
-      padding: 2px 5px;
-    }
-    
-    .tableContainer td {
-      padding: 5px;
-    }
-
-    .tableContainer .MuiTableCell-root:last-child {
-      padding-right: 0px;
+  .tableContainer td {
+    padding: 5px;
   }
-  
 
-  .tableContainer table tr td:first-child + td + td {
+  .tableContainer .MuiTableCell-root:last-child {
+    padding-right: 0px;
+  }
+
+
+  .tableContainer table tr td:first-child+td+td {
     display: none;
   }
 
-  .tableContainer table tr th:first-child + th + th {
+  .tableContainer table tr th:first-child+th+th {
     display: none;
   }
 
-  .tableContainer table tr td:first-child + td + td + td {
+  .tableContainer table tr td:first-child+td+td+td {
     display: none;
   }
 
-  .tableContainer table tr th:first-child + th + th + th {
+  .tableContainer table tr th:first-child+th+th+th {
     display: none;
   }
 
-  .tableContainer table tr td:first-child + td + td + td + td{
+  .tableContainer table tr td:first-child+td+td+td+td {
     display: none;
   }
 
-  .tableContainer table tr th:first-child + th + th + th + th{
+  .tableContainer table tr th:first-child+th+th+th+th {
     display: none;
   }
 
 
-  .tableContainer table tr td:first-child + td + td + td + td + td {
+  .tableContainer table tr td:first-child+td+td+td+td+td {
     display: none;
   }
 
-  .tableContainer table tr th:first-child + th + th + th + th + th {
+  .tableContainer table tr th:first-child+th+th+th+th+th {
     display: none;
   }
 
-  .tableContainer table tr td:first-child + td + td + td + td + td + td {
+  .tableContainer table tr td:first-child+td+td+td+td+td+td {
     display: none;
   }
 
-  .tableContainer table tr th:first-child + th + th + th + th + th + th {
+  .tableContainer table tr th:first-child+th+th+th+th+th+th {
     display: none;
   }
 
@@ -139,32 +150,34 @@ td {
   .tableContainer .MuiTableCell-root {
     padding: 1px 2px;
   }
-  
+
   .tableContainer .MuiTableCell-root:last-child {
     padding-right: 0px;
-}
+  }
 
-  .tableContainer table tr td:first-child + td + td + td {
+  .tableContainer table tr td:first-child+td+td+td {
     display: none;
   }
 
-  .tableContainer table tr th:first-child + th + th + th {
+  .tableContainer table tr th:first-child+th+th+th {
     display: none;
   }
 
-  .tableContainer table tr td:first-child + td + td + td + td{
+  .tableContainer table tr td:first-child+td+td+td+td {
     display: none;
   }
 
-  .tableContainer table tr th:first-child + th + th + th + th{
+  .tableContainer table tr th:first-child+th+th+th+th {
     display: none;
   }
 }
 
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #3498db;
+  /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -172,6 +185,11 @@ td {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

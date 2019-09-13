@@ -22,13 +22,13 @@ import WrappedButton from "../WrappedButton";
 import { getHTMLDBTemplate } from "../../templates/handlebar-template/handlebarPrintHMTL";
 
 const TABLE_COLUMNS = [
-  "Order placed",
+  "Date added",
   "Name",
   "Email",
-  "Phone#",
-  "Company name",
-  "Items in order",
-  "Order status",
+  "Phone",
+  "Company Name",
+  "Items Per Ticket",
+  "Status",
   "Actions"
 ];
 
@@ -178,7 +178,7 @@ export default class CustomizedTables extends React.Component {
                 <TableCell align="center">
                   {order.customer.customer_items.length}
                 </TableCell>
-                <TableCell align="center">
+                <TableCell className="ticketStatus" align="center">
                   <div
                     onClick={e => {
                       e.stopPropagation();
@@ -218,7 +218,7 @@ export default class CustomizedTables extends React.Component {
           justifyContent: "center"
         }}
       >
-        <h2>There are no tickets in the database</h2>
+        <div className="rimowaTitle">There are no tickets in the database</div>
       </div>
     ) : (
       <div

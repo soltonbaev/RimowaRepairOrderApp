@@ -135,15 +135,14 @@ export default class Signature extends React.Component {
           {this.state.submitStarted ? (
             <div className="buttonWrapper">
               <WrappedButton href={ROUTES.HOME} label="< Main menu" />
-              <WrappedButton
+              {/* <WrappedButton
                 className="printTicket"
                 onClick={() => this.printOrderInfo(this.state.orderData)}
                 label="Print this ticket"
-              />
+              /> */}
               {/* <WrappedButton
                 className="viewTickets"
-                onClick={this.showAuthConfirm}
-                // href={ROUTES.REPAIR_ORDERS.PATH}
+                href={ROUTES.REPAIR_ORDERS.PATH}
                 label="View Tickets"
               /> */}
               <WrappedButton

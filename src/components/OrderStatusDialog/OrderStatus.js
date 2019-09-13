@@ -1,4 +1,5 @@
 import React from "react";
+import "./OrderStatus.css";
 import {
   Popover,
   Paper,
@@ -19,7 +20,7 @@ export default class OrderStatus extends React.Component {
     const { anchor, selectedValue, onClose } = this.props;
     return (
       <Popover
-        className="confirmDelete"
+        className="statusRadioButtons"
         open={Boolean(anchor)}
         onClose={onClose}
         anchorOrigin={{

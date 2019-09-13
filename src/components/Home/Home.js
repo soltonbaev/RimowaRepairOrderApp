@@ -32,7 +32,7 @@ export default class Home extends React.Component {
       <div className="homeContainer bodyContainer">
         <div className="rimowaTop">
           <div className="rimowaLogoText">RIMOWA</div>
-          <div className="rimowaSubtitle">Client Care</div>
+          <div className="rimowaSubtitle"> Client Care</div>
         </div>
         <div className="rimowaMid" ref={ref => (this.rootRef = ref)}>
           <Popover
