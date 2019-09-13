@@ -10,19 +10,35 @@ import { unauthenticate } from "./store/actions";
 import { AUTH_INTERVAL } from "./config";
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    this.authTimer = setInterval(
-      () => store.dispatch(unauthenticate()),
-      AUTH_INTERVAL
-    );
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.authTimer);
+    function activityWatcher() {
+      var secondsSinceLastActivity = 0;
+      var maxInactivity = AUTH_INTERVAL;
+      setInterval(function() {
+        secondsSinceLastActivity++;
+        if (secondsSinceLastActivity > maxInactivity) {
+          store.dispatch(unauthenticate());
+        }
+      }, 1000);
+      function activity() {
+        if (
+          window.location.pathname === "/repair-orders" ||
+          window.location.pathname === "/"
+        )
+          secondsSinceLastActivity = 0;
+      }
+      var activityEvents = [
+        "mousedown",
+        "mousemove",
+        "keydown",
+        "scroll",
+        "touchstart"
+      ];
+      activityEvents.forEach(function(eventName) {
+        document.addEventListener(eventName, activity, true);
+      });
+    }
+    activityWatcher();
   }
 
   render() {
