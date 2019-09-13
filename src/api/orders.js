@@ -13,4 +13,7 @@ export default class Orders extends Base {
   delete(uid) {
     return this.apiClient.delete(`deleteOrder/${uid}`);
   }
+  changeOrderStatus(status) {
+    return this.apiClient.put("changeOrderStatus", status);
+  }
 }

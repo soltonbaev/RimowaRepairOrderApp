@@ -1,6 +1,12 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import { SET_ORDERS_LIST, GET_ORDERS, SET_CUSTOMERS_LIST, AUTH_TRUE, AUTH_FALSE } from "./actionTypes";
+import {
+  SET_ORDERS_LIST,
+  GET_ORDERS,
+  SET_CUSTOMERS_LIST,
+  AUTH_TRUE,
+  AUTH_FALSE
+} from "./actionTypes";
 import { setCustomers, setOrders } from "./actions";
 import api from "../api";
 
@@ -66,6 +72,14 @@ export function deleteOrders(uid) {
   return function(dispatch) {
     dispatch({ type: GET_ORDERS });
     api.orders.delete(uid).then(res => {
+      dispatch(getOrders());
+    });
+  };
+}
+
+export function updateOrderStatus(newStatus, uid) {
+  return function(dispatch) {
+    api.orders.changeOrderStatus({ newStatus, uid }).then(res => {
       dispatch(getOrders());
     });
   };
