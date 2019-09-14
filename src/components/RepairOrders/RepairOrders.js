@@ -41,7 +41,7 @@ export default class RepairOrders extends React.Component {
         <div className="tableWrapper">
           <div className="labelButtonContainer">
             <div className="homeButton">
-              <WrappedButton href={ROUTES.HOME} label="Main menu" />
+              <WrappedButton href={ROUTES.HOME} label="< Main menu" />
             </div>
             <div className="tableLabel">REPAIR TICKETS</div>
             <div className="exportButton">

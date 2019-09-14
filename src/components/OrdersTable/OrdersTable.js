@@ -28,7 +28,7 @@ const TABLE_COLUMNS = [
   "Email",
   "Phone",
   "Company Name",
-  "Items Per Ticket",
+  "Items",
   "Status",
   "Actions"
 ];
@@ -165,7 +165,7 @@ export default class CustomizedTables extends React.Component {
                 className="tableRow"
                 onClick={e => this.showPreview(e.currentTarget, order)}
               >
-                <TableCell >
+                <TableCell align="center">
                   {moment(order.creationDate).format("MMM DD YYYY")}
                 </TableCell>
                 <TableCell >
@@ -176,7 +176,7 @@ export default class CustomizedTables extends React.Component {
                 <TableCell >
                   {order.customer.companyName}
                 </TableCell>
-                <TableCell >
+                <TableCell align="center">
                   {order.customer.customer_items.length}
                 </TableCell>
                 <TableCell className="ticketStatus">

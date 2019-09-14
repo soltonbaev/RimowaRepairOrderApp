@@ -148,9 +148,6 @@ margin: 0 10% ;
 
 @media screen and (min-width: 480px) and (max-width: 1024px) {
 
-.rimowaMid {
-  flex: 3;
-}
 
 .checkboxWrapper {
   font-size: 12px;

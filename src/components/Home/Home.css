@@ -69,23 +69,77 @@
     text-align: center;
   }
 }
-
+/* 
 @media screen and (min-width: 481px) and (max-width: 1024px) {
 
 
 
   .rimowaMid {
     flex:4;
-    /* height: 60%; */
+
     display: flex;
     margin: 0;
     flex-direction: column;
     justify-content: space-evenly;
     text-align: center;
   }
+} */
+
+ /*  Portrait iPad mini 2, iPad mini 3, iPad mini 4, iPad 3, iPad 4, iPad Air and iPad Air 2 */
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait) {
+    .rimowaMid {flex: 2;
+    margin: 0 40px;
+    }
+  }
+
+
+  /* Landscape iPad mini 2, iPad mini 3, iPad mini 4, iPad 3, iPad 4, iPad Air and iPad Air 2 */
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: landscape) {
+
+    .rimowaMid {flex: 4;
+    margin: 0 40px;}
+  }
+
+/* Portrait iPad Pro */
+
+@media only screen 
+  and (min-device-width: 1025px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait) {
+.rimowaMid {
+  flex: 2;
+  margin: 0;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
 }
 
+  }
+/* Landscape Portait Pro */
 
+  @media only screen 
+  and (min-device-width: 1025px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: landscape) {
+
+.rimowaMid {
+  flex: 2;
+  margin: 0;
+}
+
+  }
 
 /*END GLOBAL*/
 
