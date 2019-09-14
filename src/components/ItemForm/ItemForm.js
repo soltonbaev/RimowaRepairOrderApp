@@ -115,7 +115,7 @@ const createItemForm = itemNum => {
               validate={[required]}
             />
           </div>
-          <div className="row">
+          {/* <div className="row"> */}
             <div className="checkboxWrapper">
               <Field
                 name="warranty"
@@ -171,7 +171,7 @@ const createItemForm = itemNum => {
                 )}
               />
             </div>
-          </div>
+          {/* </div> */}
         </div>
       </form>
     );

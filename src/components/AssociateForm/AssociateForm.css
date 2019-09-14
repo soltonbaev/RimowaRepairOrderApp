@@ -84,7 +84,7 @@ margin: 0 10% ;
 
 .checkboxWrapper {
   font-size: 12px;
-  padding: 16px;
+  padding: 20px 60px;
   display: flex;
   flex-direction: row;
 }
@@ -116,6 +116,7 @@ margin: 0 10% ;
 
   .checkboxWrapper {
     display: unset;
+    padding: 16px;
   }
 
   .associateFormContainer .inputField {
@@ -143,4 +144,18 @@ margin: 0 10% ;
   .associateFormContainer .MuiButton-root {
     margin: 1vh;
   }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+
+.rimowaMid {
+  flex: 3;
+}
+
+.checkboxWrapper {
+  font-size: 12px;
+  padding: 50px 100px;
+  display: flex;
+  flex-direction:row;
+}
 }

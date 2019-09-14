@@ -1,7 +1,12 @@
 
 /* hightlight ticket status table cell */
-td .ticketStatus {
+.ticketStatus {
   display: block;
+}
+
+.statusWrapper {
+  display:flex; flex-direction: row;
+  align-items: center;
 }
 
 .ticketStatus:hover {

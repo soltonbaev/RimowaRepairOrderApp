@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -164,21 +165,23 @@ export default class CustomizedTables extends React.Component {
                 className="tableRow"
                 onClick={e => this.showPreview(e.currentTarget, order)}
               >
-                <TableCell align="center">
+                <TableCell >
                   {moment(order.creationDate).format("MMM DD YYYY")}
                 </TableCell>
-                <TableCell align="center">
+                <TableCell >
                   {`${order.customer.firstName} ${order.customer.lastName}`}
                 </TableCell>
-                <TableCell align="center">{order.customer.email}</TableCell>
-                <TableCell align="center">{order.customer.phone}</TableCell>
-                <TableCell align="center">
+                <TableCell >{order.customer.email}</TableCell>
+                <TableCell >{order.customer.phone}</TableCell>
+                <TableCell >
                   {order.customer.companyName}
                 </TableCell>
-                <TableCell align="center">
+                <TableCell >
                   {order.customer.customer_items.length}
                 </TableCell>
-                <TableCell className="ticketStatus" align="center">
+                <TableCell className="ticketStatus">
+                <div className="statusWrapper">
+                <ArrowDropDownCircleOutlinedIcon style={{padding: "0 5px 0 5px"}}/>
                   <div
                     onClick={e => {
                       e.stopPropagation();
@@ -188,10 +191,13 @@ export default class CustomizedTables extends React.Component {
                         order.uid
                       );
                     }}
-                    style={{ fontStyle: "italic", fontWeight: "bold" }}
+                    
                   >
+                    
                     {order.orderStatus}
                   </div>
+                  </div>
+
                 </TableCell>
                 <TableCell align="center">
                   <DeleteIcon
