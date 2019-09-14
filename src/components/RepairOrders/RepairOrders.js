@@ -35,7 +35,9 @@ export default class RepairOrders extends React.Component {
     return (
       <div className="tableContainer">
         <div className="rimowaLogoText">RIMOWA</div>
-        <div className="rimowaSubtitle"><a3>Client Care</a3></div>
+        <div className="rimowaSubtitle">
+          <h3>Client Care</h3>
+        </div>
         <div className="tableWrapper">
           <div className="labelButtonContainer">
             <div className="homeButton">
